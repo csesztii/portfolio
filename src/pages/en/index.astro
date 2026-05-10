@@ -1,25 +1,28 @@
 ---
 import Page from '../../layouts/Page.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import { getLocaleFromUrl, localePath, publicAsset } from '../../i18n/utils';
 
 const title = 'Home';
 const description = 'Portfolio home';
+
+const locale = getLocaleFromUrl(Astro.url);
 ---
 
 <Page title={title} description={description} showNav={false}>
   <section class="page page--home">
     <div class="lang">
-      <a class="lang__item lang__item--active" href="/en/">→ English</a>
-      <a class="lang__item" href="/de/">Deutsch</a>
-      <a class="lang__item" href="/hu/">Magyar</a>
+      <a class="lang__item lang__item--active" href={localePath('/', 'en')}>→ English</a>
+      <a class="lang__item" href={localePath('/', 'de')}>Deutsch</a>
+      <a class="lang__item" href={localePath('/', 'hu')}>Magyar</a>
     </div>
 
     <div class="home">
       <section class="home__left">
-        <img class="avatar" src="/profile-placeholder.svg" alt="" />
+        <img class="avatar" src={publicAsset('profile-placeholder.svg')} alt="" />
         <h1 class="name">Eszter Molnár</h1>
         <div class="role">M.Sc student in Computer Science</div>
-        <a class="readcv" href="/en/cv">Read my CV →</a>
+        <a class="readcv" href={localePath('/cv', locale)}>Read my CV →</a>
         <button class="contactBtn" id="contact-open" type="button">CONTACT</button>
       </section>
 
@@ -36,9 +39,9 @@ const description = 'Portfolio home';
         </div>
 
         <div class="navBtns" id="home-nav">
-          <a class="bigBtn bigBtn--exp" href="/en/experience">EXPERIENCE</a>
-          <a class="bigBtn bigBtn--works" href="/en/works">WORKS</a>
-          <a class="bigBtn bigBtn--cv" href="/en/cv">CV</a>
+          <a class="bigBtn bigBtn--exp" href={localePath('/experience', locale)}>EXPERIENCE</a>
+          <a class="bigBtn bigBtn--works" href={localePath('/works', locale)}>WORKS</a>
+          <a class="bigBtn bigBtn--cv" href={localePath('/cv', locale)}>CV</a>
         </div>
 
         <div class="contactPanel" id="contact-slot" hidden>

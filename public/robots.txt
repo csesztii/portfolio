@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
 
-Disallow: /en/applications
-Disallow: /hu/applications
-Disallow: /de/applications
-
-Sitemap: https://<your-site>/sitemap-index.xml
-
+Sitemap: https://YOUR_USERNAME.github.io/portfolio/sitemap-index.xml

@@ -10,7 +10,9 @@ interface Props {
 
 const { title, description, showNav = true } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url) as Locale;
-const canonical = Astro.url.toString();
+const canonical = Astro.site
+  ? new URL(`${Astro.url.pathname}${Astro.url.search}`, Astro.site).href
+  : Astro.url.href;
 ---
 
 <Base title={title} description={description} locale={locale} canonical={canonical}>

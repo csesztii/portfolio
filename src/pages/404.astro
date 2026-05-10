@@ -1,6 +1,6 @@
 ---
 import Page from '../layouts/Page.astro';
-import { getLocaleFromUrl } from '../i18n/utils';
+import { getLocaleFromUrl, localePath } from '../i18n/utils';
 
 const locale = getLocaleFromUrl(Astro.url);
 ---
@@ -8,6 +8,6 @@ const locale = getLocaleFromUrl(Astro.url);
 <Page title="Not found" description="404">
   <h1>404</h1>
   <p>Page not found.</p>
-  <a href={`/${locale}/`}>Go home</a>
+  <a href={localePath('/', locale)}>Go home</a>
 </Page>
 

@@ -2,12 +2,22 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
-export default defineConfig({
-  // Replace with your actual GitHub Pages URL
-  site: 'https://<your-github-username>.github.io',
+/**
+ * GitHub Pages URLs (production build via Actions):
+ * Set repository Variables in GitHub → Settings → Secrets and variables → Actions → Variables
+ * - PAGES_SITE_URL  Example: https://USERNAME.github.io
+ * - PAGES_BASE_PATH Use "/" for USERNAME.github.io root repo only; otherwise "/portfolio" (same as repo name)
+ */
+const siteUrl =
+  process.env.PAGES_SITE_URL?.trim() ? process.env.PAGES_SITE_URL.trim() : 'https://csesztii.github.io';
 
-  // If repo name is NOT the user root repo, add the base path:
-  // base: '/portfolio',
+const rawBase =
+  process.env.PAGES_BASE_PATH?.trim()?.length ? process.env.PAGES_BASE_PATH.trim() : '/portfolio';
+
+export default defineConfig({
+  site: siteUrl,
+  /** @type {string} */
+  base: rawBase === '/' ? '/' : rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase,
 
   integrations: [
     tailwind({ applyBaseStyles: false }),

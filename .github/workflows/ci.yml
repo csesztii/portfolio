@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm install --legacy-peer-deps
+      - run: npm run check
+      - run: npm run build
+        env:
+          PAGES_SITE_URL: ${{ vars.PAGES_SITE_URL }}
+          PAGES_BASE_PATH: ${{ vars.PAGES_BASE_PATH }}

@@ -1,4 +1,6 @@
 ---
+import { publicAsset } from '../i18n/utils';
+
 interface Props {
   title: string;
   description: string;
@@ -9,6 +11,12 @@ interface Props {
 }
 
 const { title, description, image, buttonText = 'View', url, repo } = Astro.props;
+
+const normalizedImage =
+  image.startsWith('http://') || image.startsWith('https://') || image.startsWith('data:')
+    ? image
+    : publicAsset(image.replace(/^\/+/, ''));
+
 const href = url ?? repo ?? '#';
 ---
 
@@ -16,7 +24,7 @@ const href = url ?? repo ?? '#';
   <div class="card__inner">
     <h3 class="card__title">{title}</h3>
     <div class="card__media">
-      <img class="card__img" src={image} alt="" loading="lazy" />
+      <img class="card__img" src={normalizedImage} alt="" loading="lazy" />
     </div>
     <p class="card__desc">{description}</p>
     <a class="card__cta" href={href}>{buttonText}</a>
