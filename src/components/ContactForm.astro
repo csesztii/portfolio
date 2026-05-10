@@ -1,0 +1,115 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Contact' } = Astro.props;
+---
+
+<section aria-label={title} class="panel">
+  <h2 class="panel__title">{title}</h2>
+  <div class="meta">
+    <a class="meta__link" href="mailto:mol.eszter04@gmail.com">mol.eszter04@gmail.com</a>
+    <div class="meta__line">+36 30 911 7060</div>
+    <a class="meta__link" href="#" aria-label="LinkedIn">Linkedin →</a>
+  </div>
+  <form class="form" method="post" action="#">
+    <div class="row">
+      <label class="field">
+        <span class="field__label">First Name</span>
+        <input class="field__control" name="firstName" autocomplete="given-name" />
+      </label>
+      <label class="field">
+        <span class="field__label">Last Name</span>
+        <input class="field__control" name="lastName" autocomplete="family-name" />
+      </label>
+    </div>
+
+    <label class="field">
+      <span class="field__label">Subject</span>
+      <input class="field__control" name="subject" />
+    </label>
+
+    <label class="field">
+      <span class="field__label">Message</span>
+      <textarea class="field__control field__control--textarea" name="message" rows={9} />
+    </label>
+
+    <button class="button button--primary" type="submit">SEND</button>
+  </form>
+</section>
+
+<style>
+  .panel {
+    border: 0;
+    border-radius: 0;
+    padding: var(--space-16);
+    background: var(--color-bg-contact);
+    color: var(--color-ink);
+  }
+  .panel__title {
+    margin: 0 0 var(--space-8) 0;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    letter-spacing: -0.02em;
+  }
+  .meta {
+    display: grid;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+  }
+  .meta__link {
+    color: inherit;
+    text-decoration: underline;
+    width: max-content;
+  }
+  .meta__line {
+    color: inherit;
+  }
+  .form {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 720px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+  .field {
+    display: grid;
+    gap: var(--space-2);
+  }
+  .field__label {
+    display: none;
+  }
+  .field__control {
+    width: 100%;
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.8rem;
+    background: rgba(255, 255, 255, 0.25);
+    color: inherit;
+  }
+  .field__control--textarea {
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-2);
+    resize: vertical;
+    min-height: 180px;
+  }
+  .button {
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 3rem;
+    border: 0;
+    background: var(--color-ink);
+    color: var(--color-white);
+    width: max-content;
+    justify-self: end;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .button--primary {
+    background: var(--color-ink);
+  }
+</style>
+

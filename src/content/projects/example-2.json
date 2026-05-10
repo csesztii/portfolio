@@ -1,0 +1,11 @@
+{
+  "title": "Project Two",
+  "description": "Short description goes here.",
+  "tech": ["TypeScript", "UI"],
+  "repo": "https://github.com/example/repo",
+  "image": "/works/placeholder-2.svg",
+  "featured": false,
+  "order": 2,
+  "buttonText": "See code"
+}
+
