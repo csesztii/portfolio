@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  locale: string;
+  canonical: string;
+}
+
+const { title, description, locale, canonical } = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={`https://<your-site>/en${Astro.url.pathname.replace(/^\/(en|hu|de)/, '')}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="hu"
+      href={`https://<your-site>/hu${Astro.url.pathname.replace(/^\/(en|hu|de)/, '')}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="de"
+      href={`https://<your-site>/de${Astro.url.pathname.replace(/^\/(en|hu|de)/, '')}`}
+    />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:type" content="website" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Your Name',
+        url: 'https://<your-site>/en',
+        sameAs: ['https://linkedin.com/in/yourprofile', 'https://github.com/yourusername'],
+      })}
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only">Skip to content</a>
+    <slot />
+  </body>
+</html>
+

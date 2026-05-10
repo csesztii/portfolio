@@ -1,0 +1,41 @@
+/* src/styles/tokens.css */
+/* Export these values from Figma and paste here before any agent begins work */
+
+:root {
+  /* Colors */
+  --color-brand: #000000; /* replace */
+  --color-surface: #ffffff; /* replace */
+  --color-text: #1a1a1a; /* replace */
+  --color-muted: #6b7280; /* replace */
+  --color-accent: #000000; /* replace */
+
+  /* Typography */
+  --font-display: 'YourDisplayFont', serif;
+  --font-body: 'YourBodyFont', sans-serif;
+  --font-size-base: 1rem;
+  --line-height-base: 1.6;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-8: 2rem;
+  --space-16: 4rem;
+
+  /* Borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark mode overrides */
+:root.dark {
+  --color-surface: #0f0f0f;
+  --color-text: #f5f5f5;
+  --color-muted: #9ca3af;
+}
+

@@ -1,0 +1,31 @@
+---
+import Base from './Base.astro';
+import { getLocaleFromUrl, localePath, type Locale } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url) as Locale;
+const canonical = Astro.url.toString();
+---
+
+<Base title={title} description={description} locale={locale} canonical={canonical}>
+  <header>
+    <nav aria-label="Primary">
+      <a href={localePath('/', locale)}>Home</a>
+      <a href={localePath('/experience', locale)}>Experience</a>
+      <a href={localePath('/works', locale)}>Works</a>
+      <a href={localePath('/cv', locale)}>CV</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <footer />
+</Base>
+
