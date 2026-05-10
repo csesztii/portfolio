@@ -1,0 +1,189 @@
+---
+import Page from '../../layouts/Page.astro';
+
+const title = 'CV';
+const description = 'Curriculum vitae';
+---
+
+<Page title={title} description={description}>
+  <section class="page page--cv">
+    <div class="wrap">
+      <h1>CV</h1>
+
+      <div class="cols">
+        <section class="col">
+          <h2>Education</h2>
+          <div class="scroll">
+            <div class="row">
+              <div class="date">10.2025 -</div>
+              <div class="txt">
+                <strong>M.Sc. in Computer Science</strong><br />
+                University of Freiburg, Germany<br /><br />
+                Specializing in Artificial Intelligence
+              </div>
+            </div>
+            <div class="row">
+              <div class="date">09.2022 - 07.2025</div>
+              <div class="txt">
+                <strong>B.Sc. in Computer Science</strong><br />
+                Eötvös Loránd University, Hungary<br /><br />
+                Specialized in Software Engineering
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="sep" aria-hidden="true"></div>
+
+        <section class="col col--mid">
+          <h2>Experience</h2>
+          <div class="scroll">
+            <div class="row">
+              <div class="date">11.2025 -</div>
+              <div class="txt">
+                <strong>AI Team Manager</strong><br />
+                Safetrace<br /><br />
+                <span class="small">
+                  Directing team strategy and execution for LLM integration. Specialize in developing
+                  synthetic data generation pipelines to enhance model training while maintaining
+                  data privacy
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="date">07.2025 - 09.2025</div>
+              <div class="txt">
+                <strong>Machine Learning Engineer</strong><br />
+                HUN-REN SZTAKI Institute for Computer Science and Control, Budapest<br /><br />
+                <span class="small">
+                  Specializing in the application of computer vision algorithms for medical data
+                  processing and analysis
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="date">07.2025 - 09.2025</div>
+              <div class="txt">
+                <strong>Research Intern</strong><br />
+                Max Planck Institute for Biological Intelligence, Munich<br /><br />
+                <span class="small">
+                  Developed an animal tracking program for a biological experiment
+                </span>
+                <div class="tiny">+ Designed and implemented software solutions</div>
+              </div>
+            </div>
+
+            <div class="down" aria-hidden="true">⌄</div>
+          </div>
+        </section>
+
+        <div class="sep" aria-hidden="true"></div>
+
+        <section class="col">
+          <h2>Skills and Abilities</h2>
+          <div class="scroll">
+            <p class="skill">
+              <strong>Python</strong> (Pytorch, Pandas)<br />
+              <strong>Experience in ML</strong> model training and architecture
+            </p>
+            <p class="skill"><strong>HTML, CSS, JavaScript</strong>, React, WordPress</p>
+            <p class="skill"><strong>C#</strong>, Java</p>
+            <p class="skill"><strong>Git</strong>, MS Office</p>
+            <p class="skill"><strong>Hungarian</strong>: ***** (native)</p>
+            <p class="skill"><strong>English</strong>: **** (upper intermediate, Cambridge CAE)</p>
+            <p class="skill"><strong>German</strong>: ** (elementary)</p>
+
+            <a class="download" href="#">Download CV in PDF format →</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .page--cv {
+      background: var(--color-bg-cv);
+      min-height: 100vh;
+      color: var(--color-ink);
+    }
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 4.5rem 3.25rem;
+    }
+    h1 {
+      margin: 0 0 2rem 0;
+      font-family: var(--font-display);
+      font-size: 3rem;
+      letter-spacing: -0.01em;
+    }
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    .sep {
+      background: var(--color-ink);
+      opacity: 0.9;
+    }
+    .col {
+      min-height: 640px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+    h2 {
+      margin: 0 0 1rem 0;
+      font-size: 1.55rem;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      font-weight: 700;
+    }
+    .scroll {
+      overflow: auto;
+      padding-right: 0.75rem;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+      align-items: start;
+    }
+    .date {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .txt {
+      text-align: right;
+    }
+    .small {
+      font-size: 0.8rem;
+      line-height: 1.35;
+      display: inline-block;
+      max-width: 440px;
+    }
+    .tiny {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-top: 0.35rem;
+    }
+    .skill {
+      margin: 0 0 1.25rem 0;
+    }
+    .download {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      width: max-content;
+    }
+    .down {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</Page>
+

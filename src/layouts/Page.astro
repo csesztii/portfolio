@@ -1,31 +1,71 @@
 ---
 import Base from './Base.astro';
-import { getLocaleFromUrl, localePath, type Locale } from '../i18n/utils';
+import { t, getLocaleFromUrl, localePath, type Locale } from '../i18n/utils';
 
 interface Props {
   title: string;
   description: string;
+  showNav?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, showNav = true } = Astro.props;
 const locale = getLocaleFromUrl(Astro.url) as Locale;
 const canonical = Astro.url.toString();
 ---
 
 <Base title={title} description={description} locale={locale} canonical={canonical}>
-  <header>
-    <nav aria-label="Primary">
-      <a href={localePath('/', locale)}>Home</a>
-      <a href={localePath('/experience', locale)}>Experience</a>
-      <a href={localePath('/works', locale)}>Works</a>
-      <a href={localePath('/cv', locale)}>CV</a>
-    </nav>
-  </header>
+  {
+    showNav && (
+      <header class="siteHeader">
+        <nav class="siteNav" aria-label="Primary">
+          <a class="siteNav__link" href={localePath('/', locale)}>
+            {t('nav.home', locale)}
+          </a>
+          <a class="siteNav__link" href={localePath('/experience', locale)}>
+            {t('nav.experience', locale)}
+          </a>
+          <a class="siteNav__link" href={localePath('/works', locale)}>
+            {t('nav.works', locale)}
+          </a>
+          <a class="siteNav__link" href={localePath('/cv', locale)}>
+            {t('nav.cv', locale)}
+          </a>
+        </nav>
+      </header>
+    )
+  }
 
   <main id="main-content">
     <slot />
   </main>
 
   <footer />
+
+  <style>
+    .siteHeader {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .siteNav {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      color: var(--color-ink);
+    }
+    .siteNav__link {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .siteNav__link:hover {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+  </style>
 </Base>
 

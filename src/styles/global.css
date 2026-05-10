@@ -17,6 +17,14 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
