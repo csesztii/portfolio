@@ -1,0 +1,23 @@
+---
+import { localePath } from '../i18n/utils';
+
+// Required for Astro i18n: root index exists to redirect to default locale.
+const target = localePath('/', 'en');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting…</title>
+    <link rel="canonical" href={target} />
+  </head>
+  <body>
+    <p>
+      Redirecting to <a href={target}>{target}</a>
+    </p>
+  </body>
+</html>
+
