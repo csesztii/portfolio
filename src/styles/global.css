@@ -47,3 +47,38 @@ a {
   outline: 2px solid var(--color-brand);
   outline-offset: 3px;
 }
+
+/* View Transitions Custom Animation */
+::view-transition-group(root) {
+  animation-duration: 0.5s;
+}
+
+/* Forward navigation (New page on top) */
+html[data-astro-transition="forward"] ::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+html[data-astro-transition="forward"] ::view-transition-new(root) {
+  animation: slide-in-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 2;
+}
+
+/* Backward navigation (Old page slides away) */
+html[data-astro-transition="back"] ::view-transition-old(root) {
+  animation: slide-out-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 2;
+}
+html[data-astro-transition="back"] ::view-transition-new(root) {
+  animation: none;
+  z-index: 1;
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100vw); box-shadow: -20px 0 40px rgba(0,0,0,0.2); }
+  to { transform: translateX(0); box-shadow: 0 0 0px rgba(0,0,0,0); }
+}
+
+@keyframes slide-out-right {
+  from { transform: translateX(0); box-shadow: -20px 0 40px rgba(0,0,0,0.2); }
+  to { transform: translateX(100vw); box-shadow: 0 0 0px rgba(0,0,0,0); }
+}

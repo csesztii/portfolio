@@ -88,24 +88,27 @@ const locale = getLocaleFromUrl(Astro.url);
   </section>
 
   <script>
-    const open = document.getElementById("contact-open");
-    const slot = document.getElementById("contact-slot");
-    const close = document.getElementById("contact-close");
-    const nav = document.getElementById("home-nav");
-    if (open && slot) {
-      open.addEventListener("click", () => {
-        slot.classList.add("is-open");
-        if (nav) nav.hidden = true;
-        document.documentElement.style.overflow = "hidden";
-      });
-    }
-    if (close && slot) {
-      close.addEventListener("click", () => {
-        slot.classList.remove("is-open");
-        if (nav) nav.hidden = false;
-        document.documentElement.style.overflow = "";
-      });
-    }
+    document.addEventListener('astro:page-load', () => {
+      const open = document.getElementById("contact-open");
+      const slot = document.getElementById("contact-slot");
+      const close = document.getElementById("contact-close");
+      const nav = document.getElementById("home-nav");
+      
+      if (open && slot) {
+        open.addEventListener("click", () => {
+          slot.classList.add("is-open");
+          if (nav) nav.hidden = true;
+          document.documentElement.style.overflow = "hidden";
+        });
+      }
+      if (close && slot) {
+        close.addEventListener("click", () => {
+          slot.classList.remove("is-open");
+          if (nav) nav.hidden = false;
+          document.documentElement.style.overflow = "";
+        });
+      }
+    });
   </script>
 
   <style>
