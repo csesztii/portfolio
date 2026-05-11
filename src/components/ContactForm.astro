@@ -9,10 +9,8 @@ const { title = "Contact" } = Astro.props;
 <section aria-label={title} class="panel">
   <h2 class="panel__title">{title}</h2>
   <div class="meta">
-    <a class="meta__link" href="mailto:mol.eszter04@gmail.com"
-      >mol.eszter04@gmail.com</a
-    >
-    <div class="meta__line">+36 30 911 7060</div>
+    <div class="meta__line"><p>mol.eszter04@gmail.com</p></div>
+    <div class="meta__line"><p>+36 30 911 7060</p></div>
     <a
       class="meta__link"
       href="https://www.linkedin.com/in/esztermolnar0420"
@@ -52,8 +50,7 @@ const { title = "Contact" } = Astro.props;
         class="field__control field__control--textarea"
         name="message"
         rows={9}
-        placeholder="Message"
-      ></textarea>
+        placeholder="Message"></textarea>
     </label>
 
     <button class="button button--primary" type="submit">SEND</button>
