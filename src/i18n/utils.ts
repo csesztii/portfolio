@@ -26,7 +26,9 @@ export function pathnameWithoutConfiguredBase(pathname: string): string {
 /** Public `/public` file URLs with correct GitHub Pages `base`. */
 export function publicAsset(subpath: string): string {
   const clean = subpath.replace(/^\/+/, '');
-  return `${import.meta.env.BASE_URL}${clean}`;
+  const base = import.meta.env.BASE_URL;
+  const separator = base.endsWith('/') ? '' : '/';
+  return `${base}${separator}${clean}`;
 }
 
 export function getLocaleFromUrl(url: URL): Locale {

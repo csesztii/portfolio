@@ -1,64 +1,101 @@
 ---
-import Page from '../../layouts/Page.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import { getLocaleFromUrl, localePath, publicAsset } from '../../i18n/utils';
+import Page from "../../layouts/Page.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import { getLocaleFromUrl, localePath, publicAsset } from "../../i18n/utils";
 
-const title = 'Home';
-const description = 'Portfolio home';
+const title = "Home";
+const description = "Portfolio home";
 
 const locale = getLocaleFromUrl(Astro.url);
 ---
 
 <Page title={title} description={description} showNav={false}>
   <section class="page page--home">
-    <div class="lang">
-      <a class="lang__item lang__item--active" href={localePath('/', 'en')}>→ English</a>
-      <a class="lang__item" href={localePath('/', 'de')}>Deutsch</a>
-      <a class="lang__item" href={localePath('/', 'hu')}>Magyar</a>
-    </div>
-
     <div class="home">
       <section class="home__left">
-        <img class="avatar" src={publicAsset('profile-placeholder.svg')} alt="" />
-        <h1 class="name">Eszter Molnár</h1>
-        <div class="role">M.Sc student in Computer Science</div>
-        <a class="readcv" href={localePath('/cv', locale)}>Read my CV →</a>
-        <button class="contactBtn" id="contact-open" type="button">CONTACT</button>
+        <div class="leftInner" id="left-content">
+          <img class="avatar" src={publicAsset("media/profile.jpeg")} alt="" />
+          <h1 class="name">Eszter Molnár</h1>
+          <p class="intro">
+            Introduction text goes here. Short, friendly, and to the point.
+          </p>
+          <a class="readcv" href={localePath("/cv", locale)}>Read my CV →</a>
+
+          <div class="globeWrap">
+            <div class="globe" aria-hidden="true">
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="1.8"></circle>
+                <path
+                  d="M3.5 12h17M12 3c2.5 2.7 4 5.9 4 9s-1.5 6.3-4 9c-2.5-2.7-4-5.9-4-9s1.5-6.3 4-9Z"
+                  stroke="currentColor"
+                  stroke-width="1.2"></path>
+              </svg>
+            </div>
+
+            <div class="lang" aria-label="Language">
+              <a
+                class="lang__item lang__item--active"
+                href={localePath("/", "en")}>→ English</a
+              >
+              <a class="lang__item" href={localePath("/", "de")}>Deutsch</a>
+              <a class="lang__item" href={localePath("/", "hu")}>Magyar</a>
+            </div>
+          </div>
+
+          <button class="contactBtn" id="contact-open" type="button"
+            >CONTACT</button
+          >
+        </div>
+
+        <div class="contactOverlay" id="contact-slot" hidden>
+          <button
+            class="closeBtn"
+            id="contact-close"
+            type="button"
+            aria-label="Close contact form"
+          >
+            ×
+          </button>
+          <ContactForm title="CONTACT" />
+        </div>
       </section>
 
       <section class="home__right">
-        <div class="globe" aria-hidden="true">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
-            <path
-              d="M3.5 12h17M12 3c2.5 2.7 4 5.9 4 9s-1.5 6.3-4 9c-2.5-2.7-4-5.9-4-9s1.5-6.3 4-9Z"
-              stroke="currentColor"
-              stroke-width="1.2"
-            />
-          </svg>
-        </div>
-
         <div class="navBtns" id="home-nav">
-          <a class="bigBtn bigBtn--exp" href={localePath('/experience', locale)}>EXPERIENCE</a>
-          <a class="bigBtn bigBtn--works" href={localePath('/works', locale)}>WORKS</a>
-          <a class="bigBtn bigBtn--cv" href={localePath('/cv', locale)}>CV</a>
-        </div>
-
-        <div class="contactPanel" id="contact-slot" hidden>
-          <ContactForm title="CONTACT" />
+          <a class="bigBtn bigBtn--exp" href={localePath("/experience", locale)}
+            >EXPERIENCE</a
+          >
+          <a class="bigBtn bigBtn--works" href={localePath("/works", locale)}
+            >WORKS</a
+          >
+          <a class="bigBtn bigBtn--cv" href={localePath("/cv", locale)}>CV</a>
         </div>
       </section>
     </div>
   </section>
 
   <script>
-    const open = document.getElementById('contact-open');
-    const slot = document.getElementById('contact-slot');
-    const nav = document.getElementById('home-nav');
+    const open = document.getElementById("contact-open");
+    const slot = document.getElementById("contact-slot");
+    const close = document.getElementById("contact-close");
+    const nav = document.getElementById("home-nav");
     if (open && slot) {
-      open.addEventListener('click', () => {
-        slot.hidden = !slot.hidden;
-        if (nav) nav.hidden = !slot.hidden;
+      open.addEventListener("click", () => {
+        slot.hidden = false;
+        if (nav) nav.hidden = true;
+        document.documentElement.style.overflow = "hidden";
+      });
+    }
+    if (close && slot) {
+      close.addEventListener("click", () => {
+        slot.hidden = true;
+        if (nav) nav.hidden = false;
+        document.documentElement.style.overflow = "";
       });
     }
   </script>
@@ -69,40 +106,22 @@ const locale = getLocaleFromUrl(Astro.url);
       color: var(--color-white);
       min-height: 100vh;
       display: grid;
-      place-items: center;
-      padding: 5.5rem 2.5rem 2.5rem;
-    }
-    .lang {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--color-white);
-      color: var(--color-ink);
-      padding: 1.25rem 2.5rem;
-      display: grid;
-      gap: 0.5rem;
-      text-align: center;
-      font-size: 1.05rem;
-    }
-    .lang__item {
-      text-decoration: none;
-      color: inherit;
-    }
-    .lang__item--active {
-      font-weight: 700;
-      text-decoration: underline;
+      overflow: hidden; /* no visible scrollbars on desktop layout */
     }
     .home {
-      width: min(1240px, 100%);
-      height: 520px;
+      width: 100%;
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-radius: 0;
+      grid-template-columns: 50% 50%;
     }
     .home__left {
-      padding: 2.25rem 2.5rem;
+      position: relative;
+      padding: 4rem 4.5rem;
+      display: grid;
+      align-content: start;
+      overflow: hidden;
+    }
+    .leftInner {
       display: grid;
       align-content: start;
       gap: 1rem;
@@ -118,16 +137,60 @@ const locale = getLocaleFromUrl(Astro.url);
       margin: 0;
       font-size: 2.5rem;
       letter-spacing: -0.02em;
-      font-weight: 650;
+      font-weight: 500;
     }
-    .role {
-      opacity: 0.9;
+    .intro {
+      margin: 0;
+      opacity: 0.92;
+      max-width: 28rem;
     }
     .readcv {
       color: inherit;
       width: max-content;
       opacity: 0.9;
+      text-decoration: underline;
+      text-underline-offset: 6px;
     }
+
+    .globeWrap {
+      position: absolute;
+      top: 2.25rem;
+      right: 2.25rem; /* close to page horizontal middle (left column edge) */
+      width: max-content;
+    }
+    .globe {
+      width: max-content;
+      opacity: 0.95;
+      cursor: default;
+    }
+    .lang {
+      position: absolute;
+      top: 0px;
+      left: -100px;
+      background: var(--color-white);
+      color: var(--color-ink);
+      padding: 1.25rem 2.5rem;
+      display: none;
+      gap: 0.5rem;
+      text-align: center;
+      font-size: 1.05rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      min-width: 9.375rem;
+      max-width: 18.75rem;
+    }
+    .lang__item {
+      text-decoration: none;
+      color: inherit;
+    }
+    .lang__item--active {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+    .globeWrap:hover .lang {
+      display: grid;
+    }
+
     .contactBtn {
       margin-top: 1.25rem;
       width: max-content;
@@ -136,34 +199,54 @@ const locale = getLocaleFromUrl(Astro.url);
       border: 0;
       background: var(--color-bg-contact);
       color: var(--color-ink);
-      font-weight: 700;
+      font-weight: 500;
       letter-spacing: 0.02em;
       cursor: pointer;
     }
 
-    .home__right {
-      padding: 2.25rem 2.5rem;
-      display: grid;
-      align-content: start;
-      gap: 2.25rem;
+    .contactOverlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      overflow: auto;
     }
-    .globe {
-      justify-self: start;
-      opacity: 0.95;
+    .closeBtn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 6;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 2px solid rgba(34, 34, 59, 0.55);
+      background: rgba(255, 255, 255, 0.35);
+      color: var(--color-ink);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .home__right {
+      padding: 4rem 4.5rem;
+      display: flex;
+      flex-direction: column;
     }
     .navBtns {
-      display: grid;
-      gap: 2.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: 0;
     }
     .bigBtn {
-      height: 92px;
+      height: 25%;
       display: grid;
       place-items: center;
       text-decoration: none;
       color: inherit;
-      border-radius: 4px;
+      border-radius: 15px;
       border: 2px solid currentColor;
-      font-size: 2.4rem;
+      font-size: 3.5rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       background: rgba(255, 255, 255, 0.02);
@@ -181,9 +264,5 @@ const locale = getLocaleFromUrl(Astro.url);
       color: #ffd6a5;
       box-shadow: 0 0 16px rgba(255, 214, 165, 0.35);
     }
-    .contactPanel {
-      height: 100%;
-    }
   </style>
 </Page>
-

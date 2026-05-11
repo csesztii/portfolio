@@ -3,25 +3,39 @@ interface Props {
   title?: string;
 }
 
-const { title = 'Contact' } = Astro.props;
+const { title = "Contact" } = Astro.props;
 ---
 
 <section aria-label={title} class="panel">
   <h2 class="panel__title">{title}</h2>
   <div class="meta">
-    <a class="meta__link" href="mailto:mol.eszter04@gmail.com">mol.eszter04@gmail.com</a>
+    <a class="meta__link" href="mailto:mol.eszter04@gmail.com"
+      >mol.eszter04@gmail.com</a
+    >
     <div class="meta__line">+36 30 911 7060</div>
-    <a class="meta__link" href="#" aria-label="LinkedIn">Linkedin →</a>
+    <a
+      class="meta__link"
+      href="https://www.linkedin.com/in/esztermolnar0420"
+      aria-label="LinkedIn">Linkedin →</a
+    >
   </div>
   <form class="form" method="post" action="#">
     <div class="row">
       <label class="field">
         <span class="field__label">First Name</span>
-        <input class="field__control" name="firstName" autocomplete="given-name" />
+        <input
+          class="field__control"
+          name="firstName"
+          autocomplete="given-name"
+        />
       </label>
       <label class="field">
         <span class="field__label">Last Name</span>
-        <input class="field__control" name="lastName" autocomplete="family-name" />
+        <input
+          class="field__control"
+          name="lastName"
+          autocomplete="family-name"
+        />
       </label>
     </div>
 
@@ -32,7 +46,10 @@ const { title = 'Contact' } = Astro.props;
 
     <label class="field">
       <span class="field__label">Message</span>
-      <textarea class="field__control field__control--textarea" name="message" rows={9} />
+      <textarea
+        class="field__control field__control--textarea"
+        name="message"
+        rows={9}></textarea>
     </label>
 
     <button class="button button--primary" type="submit">SEND</button>
@@ -52,6 +69,7 @@ const { title = 'Contact' } = Astro.props;
     font-family: var(--font-display);
     font-size: 3rem;
     letter-spacing: -0.02em;
+    font-weight: 500;
   }
   .meta {
     display: grid;
@@ -112,4 +130,3 @@ const { title = 'Contact' } = Astro.props;
     background: var(--color-ink);
   }
 </style>
-
