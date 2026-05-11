@@ -27,6 +27,7 @@ const { title = "Contact" } = Astro.props;
           class="field__control"
           name="firstName"
           autocomplete="given-name"
+          placeholder="First Name"
         />
       </label>
       <label class="field">
@@ -35,13 +36,14 @@ const { title = "Contact" } = Astro.props;
           class="field__control"
           name="lastName"
           autocomplete="family-name"
+          placeholder="Last Name"
         />
       </label>
     </div>
 
     <label class="field">
       <span class="field__label">Subject</span>
-      <input class="field__control" name="subject" />
+      <input class="field__control" name="subject" placeholder="Subject" />
     </label>
 
     <label class="field">
@@ -49,7 +51,9 @@ const { title = "Contact" } = Astro.props;
       <textarea
         class="field__control field__control--textarea"
         name="message"
-        rows={9}></textarea>
+        rows={9}
+        placeholder="Message"
+      ></textarea>
     </label>
 
     <button class="button button--primary" type="submit">SEND</button>
@@ -106,7 +110,7 @@ const { title = "Contact" } = Astro.props;
     border: 2px solid var(--color-ink);
     border-radius: var(--radius-sm);
     padding: 0.55rem 0.8rem;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgb(255, 255, 255);
     color: inherit;
   }
   .field__control--textarea {
@@ -114,6 +118,10 @@ const { title = "Contact" } = Astro.props;
     padding-bottom: var(--space-2);
     resize: vertical;
     min-height: 180px;
+  }
+  .field__control::placeholder {
+    color: var(--color-gray-400, #888888);
+    opacity: 1;
   }
   .button {
     border-radius: var(--radius-sm);

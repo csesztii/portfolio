@@ -4,7 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -21,12 +23,20 @@ body {
   margin: 0;
 }
 
+p {
+  font-size: 1.2rem;
+}
+
 a {
   color: inherit;
+  font-size: 1.2rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
@@ -37,4 +47,3 @@ a {
   outline: 2px solid var(--color-brand);
   outline-offset: 3px;
 }
-
