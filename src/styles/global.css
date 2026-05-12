@@ -21,6 +21,18 @@ html {
 
 body {
   margin: 0;
+  position: relative;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle 150px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(255, 255, 255, 0.08), transparent 80%);
+  z-index: 9999;
+  will-change: background;
 }
 
 p {

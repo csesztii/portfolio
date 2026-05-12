@@ -126,7 +126,7 @@ const { title = "Contact" } = Astro.props;
   }
   .field__control {
     width: 100%;
-    border: 2px solid var(--color-ink);
+    border: 2px solid var(--color-gray-400, #888888);
     border-radius: var(--radius-sm);
     padding: 0.55rem 0.8rem;
     background: rgb(255, 255, 255);
@@ -141,7 +141,7 @@ const { title = "Contact" } = Astro.props;
   .field__control:focus,
   .field__control:active {
     outline: none;
-    border-color: transparent;
+    border-color: var(--color-ink);
   }
   .field__control::placeholder {
     color: var(--color-gray-400, #888888);

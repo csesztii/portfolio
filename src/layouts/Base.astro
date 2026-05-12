@@ -72,6 +72,12 @@ function absoluteHref(pathnameLike: string) {
   <body>
     <a href="#main-content" class="sr-only focus:not-sr-only">Skip to content</a>
     <slot />
+    <script is:inline>
+      document.addEventListener('mousemove', (e) => {
+        document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+        document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+      });
+    </script>
   </body>
 </html>
 
