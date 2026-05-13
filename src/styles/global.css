@@ -21,18 +21,6 @@ html {
 
 body {
   margin: 0;
-  position: relative;
-  min-height: 100vh;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle 150px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(255, 255, 255, 0.08), transparent 80%);
-  z-index: 9999;
-  will-change: background;
 }
 
 p {
@@ -70,6 +58,7 @@ html[data-astro-transition="forward"] ::view-transition-old(root) {
   animation: none;
   z-index: 1;
 }
+
 html[data-astro-transition="forward"] ::view-transition-new(root) {
   animation: slide-in-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   z-index: 2;
@@ -80,17 +69,32 @@ html[data-astro-transition="back"] ::view-transition-old(root) {
   animation: slide-out-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   z-index: 2;
 }
+
 html[data-astro-transition="back"] ::view-transition-new(root) {
   animation: none;
   z-index: 1;
 }
 
 @keyframes slide-in-right {
-  from { transform: translateX(100vw); box-shadow: -20px 0 40px rgba(0,0,0,0.2); }
-  to { transform: translateX(0); box-shadow: 0 0 0px rgba(0,0,0,0); }
+  from {
+    transform: translateX(100vw);
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+  to {
+    transform: translateX(0);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  }
 }
 
 @keyframes slide-out-right {
-  from { transform: translateX(0); box-shadow: -20px 0 40px rgba(0,0,0,0.2); }
-  to { transform: translateX(100vw); box-shadow: 0 0 0px rgba(0,0,0,0); }
+  from {
+    transform: translateX(0);
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+  to {
+    transform: translateX(100vw);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  }
 }

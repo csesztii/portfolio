@@ -11,28 +11,24 @@ const description = 'Experience';
       <h1>EXPERIENCE</h1>
 
       <h2>AI Team Manager, Safetrace</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis purus in gravida
-        facilisis. Pellentesque cursus feugiat dapibus. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas.
-      </p>
+      <ul>
+        <li>Led a team of up to 5 engineers on an NLP-focused PII detection project</li>
+        <li>Built the core model training and evaluation pipeline in Python with HuggingFace</li>
+        <li>Fine-tuned XLM-RoBERTa for token classification on proprietary datasets</li>
+        <li>Designed a synthetic data generation pipeline for privacy-preserving model training</li>
+      </ul>
 
-      <h2>Research Intern, Max Planck Institute for Biological Intelligence, Munich</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis purus in gravida
-        facilisis. Pellentesque cursus feugiat dapibus. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas.
-      </p>
+      <h2>Machine Learning Engineer, HUN-REN SZTAKI – Institute for Computer Science and Control, Budapest</h2>
+      <ul>
+        <li>Researched automated coronary artery calcification measurement from cardiac CT scans</li>
+        <li>Applied TotalSegmentator for medical image segmentation and evaluated multiple methodologies</li>
+      </ul>
 
-      <h2>
-        Machine Learning Engineer, HUN-REN SZTAKI Institute for Computer Science and Control,
-        Budapest
-      </h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis purus in gravida
-        facilisis. Pellentesque cursus feugiat dapibus. Pellentesque habitant morbi tristique
-        senectus et netus et malesuada fames ac turpis egestas.
-      </p>
+      <h2>Machine Learning Intern, Max Planck Institute for Biological Intelligence, Munich</h2>
+      <ul>
+        <li>Built an end-to-end bird tracking pipeline using YOLOv8 and SAM2 from scratch; achieved 95% precision and 82% recall</li>
+        <li>Developed a Streamlit UI enabling non-technical researchers to operate the system independently</li>
+      </ul>
     </div>
   </section>
 
@@ -58,11 +54,17 @@ const description = 'Experience';
       font-size: 1.15rem;
       font-weight: 700;
     }
-    p {
+    p, ul {
       margin: 0 0 2rem 0;
       color: var(--color-ink-80);
       max-width: 1100px;
       line-height: 1.65;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
     }
   </style>
 </Page>
