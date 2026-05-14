@@ -33,7 +33,7 @@ const normalizedImage =
 const href = url ?? repo ?? "#";
 ---
 
-<article class={`card ${featured ? 'card--featured' : ''}`}>
+<article class={`card ${featured ? "card--featured" : ""}`}>
   <div class="card__inner">
     <div class="card__header">
       <h3 class="card__title">{title}</h3>
@@ -44,9 +44,27 @@ const href = url ?? repo ?? "#";
     </div>
     <p class="card__desc">{description}</p>
     <div class="card__actions">
-      {url && <a class="card__cta" href={url} target="_blank">{buttonText}</a>}
-      {repo && (!url || buttonText !== 'See code') && <a class="card__cta card__cta--secondary" href={repo} target="_blank">See code</a>}
-      {!url && !repo && <a class="card__cta" href="#" target="_blank">{buttonText}</a>}
+      {
+        url && (
+          <a class="card__cta" href={url} target="_blank">
+            {buttonText}
+          </a>
+        )
+      }
+      {
+        repo && (!url || buttonText !== "See code") && (
+          <a class="card__cta card__cta--secondary" href={repo} target="_blank">
+            See code
+          </a>
+        )
+      }
+      {
+        !url && !repo && (
+          <a class="card__cta" href="#" target="_blank">
+            {buttonText}
+          </a>
+        )
+      }
     </div>
   </div>
 </article>
@@ -100,9 +118,9 @@ const href = url ?? repo ?? "#";
   }
   .card__subtitle {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: var(--color-ink-80);
-    font-weight: 500;
+    font-weight: 300;
   }
   .card__desc {
     margin: 0;
