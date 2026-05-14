@@ -1,66 +1,114 @@
 ---
-import Page from '../../layouts/Page.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import { getLocaleFromUrl, localePath, publicAsset } from '../../i18n/utils';
+import Page from "../../layouts/Page.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import { getLocaleFromUrl, localePath, publicAsset } from "../../i18n/utils";
 
-const title = 'Home';
-const description = 'Portfolio home';
+const title = "Home";
+const description = "Portfolio home";
 
 const locale = getLocaleFromUrl(Astro.url);
 ---
 
 <Page title={title} description={description} showNav={false}>
   <section class="page page--home">
-    <div class="lang">
-      <a class="lang__item lang__item--active" href={localePath('/', 'en')}>→ English</a>
-      <a class="lang__item" href={localePath('/', 'de')}>Deutsch</a>
-      <a class="lang__item" href={localePath('/', 'hu')}>Magyar</a>
-    </div>
-
     <div class="home">
       <section class="home__left">
-        <img class="avatar" src={publicAsset('profile-placeholder.svg')} alt="" />
-        <h1 class="name">Eszter Molnár</h1>
-        <div class="role">M.Sc student in Computer Science</div>
-        <a class="readcv" href={localePath('/cv', locale)}>Read my CV →</a>
-        <button class="contactBtn" id="contact-open" type="button">CONTACT</button>
+        <div class="leftInner" id="left-content">
+          <img class="avatar" src={publicAsset("media/profile.jpeg")} alt="" />
+          <h1 class="name">Eszter Molnár</h1>
+          <p class="intro">M.Sc. Student in Computer Science.</p>
+          <a class="readcv" href={localePath("/cv", locale)}>Read my CV →</a>
+
+          <div class="globeWrap">
+            <div class="globe" aria-hidden="true">
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="9"
+                  stroke="currentColor"
+                  stroke-width="1.8"></circle>
+                <path
+                  d="M3.5 12h17M12 3c2.5 2.7 4 5.9 4 9s-1.5 6.3-4 9c-2.5-2.7-4-5.9-4-9s1.5-6.3 4-9Z"
+                  stroke="currentColor"
+                  stroke-width="1.2"></path>
+              </svg>
+            </div>
+
+            <div class="lang" aria-label="Language">
+              <a
+                class="lang__item lang__item--active"
+                href={localePath("/", "en")}>→ English</a
+              >
+              <a class="lang__item" href={localePath("/", "de")}>Deutsch</a>
+              <a class="lang__item" href={localePath("/", "hu")}>Magyar</a>
+            </div>
+          </div>
+
+          <button class="contactBtn" id="contact-open" type="button"
+            >CONTACT</button
+          >
+        </div>
+
+        <div class="contactOverlay" id="contact-slot">
+          <button
+            class="closeBtn"
+            id="contact-close"
+            type="button"
+            aria-label="Close contact form"
+          >
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z"
+                fill="currentColor"></path>
+            </svg>
+          </button>
+          <ContactForm title="CONTACT" />
+        </div>
       </section>
 
       <section class="home__right">
-        <div class="globe" aria-hidden="true">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
-            <path
-              d="M3.5 12h17M12 3c2.5 2.7 4 5.9 4 9s-1.5 6.3-4 9c-2.5-2.7-4-5.9-4-9s1.5-6.3 4-9Z"
-              stroke="currentColor"
-              stroke-width="1.2"
-            />
-          </svg>
-        </div>
-
         <div class="navBtns" id="home-nav">
-          <a class="bigBtn bigBtn--exp" href={localePath('/experience', locale)}>EXPERIENCE</a>
-          <a class="bigBtn bigBtn--works" href={localePath('/works', locale)}>WORKS</a>
-          <a class="bigBtn bigBtn--cv" href={localePath('/cv', locale)}>CV</a>
-        </div>
-
-        <div class="contactPanel" id="contact-slot" hidden>
-          <ContactForm title="CONTACT" />
+          <a class="bigBtn bigBtn--exp" href={localePath("/experience", locale)}
+            >EXPERIENCE</a
+          >
+          <a class="bigBtn bigBtn--works" href={localePath("/works", locale)}
+            >WORKS</a
+          >
+          <a class="bigBtn bigBtn--cv" href={localePath("/cv", locale)}>CV</a>
         </div>
       </section>
     </div>
   </section>
 
   <script>
-    const open = document.getElementById('contact-open');
-    const slot = document.getElementById('contact-slot');
-    const nav = document.getElementById('home-nav');
-    if (open && slot) {
-      open.addEventListener('click', () => {
-        slot.hidden = !slot.hidden;
-        if (nav) nav.hidden = !slot.hidden;
-      });
-    }
+    document.addEventListener('astro:page-load', () => {
+      const open = document.getElementById("contact-open");
+      const slot = document.getElementById("contact-slot");
+      const close = document.getElementById("contact-close");
+      const nav = document.getElementById("home-nav");
+      
+      if (open && slot) {
+        open.addEventListener("click", () => {
+          slot.classList.add("is-open");
+          if (nav) nav.hidden = true;
+          document.documentElement.style.overflow = "hidden";
+        });
+      }
+      if (close && slot) {
+        close.addEventListener("click", () => {
+          slot.classList.remove("is-open");
+          if (nav) nav.hidden = false;
+          document.documentElement.style.overflow = "";
+        });
+      }
+    });
   </script>
 
   <style>
@@ -69,40 +117,28 @@ const locale = getLocaleFromUrl(Astro.url);
       color: var(--color-white);
       min-height: 100vh;
       display: grid;
-      place-items: center;
-      padding: 5.5rem 2.5rem 2.5rem;
-    }
-    .lang {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--color-white);
-      color: var(--color-ink);
-      padding: 1.25rem 2.5rem;
-      display: grid;
-      gap: 0.5rem;
-      text-align: center;
-      font-size: 1.05rem;
-    }
-    .lang__item {
-      text-decoration: none;
-      color: inherit;
-    }
-    .lang__item--active {
-      font-weight: 700;
-      text-decoration: underline;
+      overflow: hidden; /* no visible scrollbars on desktop layout */
     }
     .home {
-      width: min(1240px, 100%);
-      height: 520px;
+      width: 100%;
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-radius: 0;
+      grid-template-columns: 50% 50%;
     }
     .home__left {
-      padding: 2.25rem 2.5rem;
+      position: relative;
+      padding: 2rem 2.5rem;
+      display: grid;
+      align-content: start;
+      overflow: hidden;
+    }
+    @media (min-width: 1440px) {
+      .home__left {
+        padding-left: 10rem;
+        padding-top: 8rem;
+      }
+    }
+    .leftInner {
       display: grid;
       align-content: start;
       gap: 1rem;
@@ -116,18 +152,76 @@ const locale = getLocaleFromUrl(Astro.url);
     }
     .name {
       margin: 0;
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       letter-spacing: -0.02em;
-      font-weight: 650;
+      font-weight: 500;
     }
-    .role {
-      opacity: 0.9;
+    .intro {
+      margin: 0;
+      opacity: 0.92;
+      max-width: 28rem;
+      font-size: 1.2rem;
     }
     .readcv {
       color: inherit;
       width: max-content;
       opacity: 0.9;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      font-size: 1.2rem;
     }
+
+    .globeWrap {
+      position: absolute;
+      top: 2.25rem;
+      right: 2.25rem; /* close to page horizontal middle (left column edge) */
+      width: max-content;
+    }
+    .globe {
+      width: max-content;
+      opacity: 0.95;
+      cursor: default;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    }
+    .globeWrap:hover .globe {
+      transform: rotate(360deg) scale(0);
+      opacity: 0;
+    }
+    .lang {
+      position: absolute;
+      top: 0px;
+      left: -100px;
+      background: var(--color-white);
+      color: var(--color-ink);
+      padding: 1.25rem 2.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-15px);
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      gap: 0.5rem;
+      text-align: center;
+      font-size: 1.05rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+      min-width: 9.375rem;
+      max-width: 18.75rem;
+      display: grid;
+    }
+    .lang__item {
+      text-decoration: none;
+      color: inherit;
+      white-space: nowrap;
+    }
+    .lang__item--active {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+    .globeWrap:hover .lang {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
     .contactBtn {
       margin-top: 1.25rem;
       width: max-content;
@@ -136,54 +230,100 @@ const locale = getLocaleFromUrl(Astro.url);
       border: 0;
       background: var(--color-bg-contact);
       color: var(--color-ink);
-      font-weight: 700;
+      font-weight: 500;
+      font-size: 1.2rem;
       letter-spacing: 0.02em;
       cursor: pointer;
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+    .contactBtn:hover {
+      transform: scale(1.05);
+    }
+
+    .contactOverlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      overflow: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(100px) scale(0.9) translateZ(0);
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      will-change: transform, opacity, visibility;
+    }
+    .contactOverlay.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1) translateZ(0);
+      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .closeBtn {
+      position: absolute;
+      top: 1.75rem;
+      right: 1.75rem;
+      z-index: 6;
+      background: transparent;
+      border: none;
+      color: var(--color-ink);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      padding: 0;
     }
 
     .home__right {
-      padding: 2.25rem 2.5rem;
-      display: grid;
-      align-content: start;
-      gap: 2.25rem;
-    }
-    .globe {
-      justify-self: start;
-      opacity: 0.95;
+      padding: 2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
     }
     .navBtns {
-      display: grid;
-      gap: 2.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: 0;
     }
     .bigBtn {
-      height: 92px;
+      height: 25%;
       display: grid;
       place-items: center;
       text-decoration: none;
       color: inherit;
-      border-radius: 4px;
+      border-radius: 15px;
       border: 2px solid currentColor;
-      font-size: 2.4rem;
+      font-size: 3.5rem;
+      font-weight: 300;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       background: rgba(255, 255, 255, 0.02);
-      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      will-change: box-shadow, transform;
+      transform: translateZ(0);
+    }
+    .bigBtn:hover {
+      transform: translateY(-2px) translateZ(0);
     }
     .bigBtn--exp {
       color: #e0aaff;
       box-shadow: 0 0 16px rgba(224, 170, 255, 0.35);
     }
+    .bigBtn--exp:hover {
+      box-shadow: 0 0 40px rgba(224, 170, 255, 0.8);
+    }
     .bigBtn--works {
       color: #90e0ef;
       box-shadow: 0 0 16px rgba(144, 224, 239, 0.35);
+    }
+    .bigBtn--works:hover {
+      box-shadow: 0 0 40px rgba(144, 224, 239, 0.8);
     }
     .bigBtn--cv {
       color: #ffd6a5;
       box-shadow: 0 0 16px rgba(255, 214, 165, 0.35);
     }
-    .contactPanel {
-      height: 100%;
+    .bigBtn--cv:hover {
+      box-shadow: 0 0 40px rgba(255, 214, 165, 0.8);
     }
   </style>
 </Page>
-

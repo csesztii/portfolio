@@ -4,7 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -21,12 +23,20 @@ body {
   margin: 0;
 }
 
+p {
+  font-size: 1.2rem;
+}
+
 a {
   color: inherit;
+  font-size: 1.2rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
@@ -38,3 +48,53 @@ a {
   outline-offset: 3px;
 }
 
+/* View Transitions Custom Animation */
+::view-transition-group(root) {
+  animation-duration: 0.5s;
+}
+
+/* Forward navigation (New page on top) */
+html[data-astro-transition="forward"] ::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+
+html[data-astro-transition="forward"] ::view-transition-new(root) {
+  animation: slide-in-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 2;
+}
+
+/* Backward navigation (Old page slides away) */
+html[data-astro-transition="back"] ::view-transition-old(root) {
+  animation: slide-out-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 2;
+}
+
+html[data-astro-transition="back"] ::view-transition-new(root) {
+  animation: none;
+  z-index: 1;
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100vw);
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+  to {
+    transform: translateX(0);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    box-shadow: -20px 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+  to {
+    transform: translateX(100vw);
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+  }
+}

@@ -1,6 +1,6 @@
 ---
-import Base from './Base.astro';
-import { t, getLocaleFromUrl, localePath, type Locale } from '../i18n/utils';
+import Base from "./Base.astro";
+import { t, getLocaleFromUrl, localePath, type Locale } from "../i18n/utils";
 
 interface Props {
   title: string;
@@ -15,59 +15,64 @@ const canonical = Astro.site
   : Astro.url.href;
 ---
 
-<Base title={title} description={description} locale={locale} canonical={canonical}>
+<Base
+  title={title}
+  description={description}
+  locale={locale}
+  canonical={canonical}
+>
   {
     showNav && (
-      <header class="siteHeader">
-        <nav class="siteNav" aria-label="Primary">
-          <a class="siteNav__link" href={localePath('/', locale)}>
-            {t('nav.home', locale)}
-          </a>
-          <a class="siteNav__link" href={localePath('/experience', locale)}>
-            {t('nav.experience', locale)}
-          </a>
-          <a class="siteNav__link" href={localePath('/works', locale)}>
-            {t('nav.works', locale)}
-          </a>
-          <a class="siteNav__link" href={localePath('/cv', locale)}>
-            {t('nav.cv', locale)}
-          </a>
-        </nav>
-      </header>
+      <a
+        class="pageCloseBtn"
+        href={localePath("/", locale)}
+        aria-label="Back to home"
+      >
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
     )
   }
+
+  <style is:global>
+    html, body {
+      scrollbar-width: none !important;
+    }
+    html::-webkit-scrollbar, body::-webkit-scrollbar {
+      display: none !important;
+    }
+  </style>
 
   <main id="main-content">
     <slot />
   </main>
 
-  <footer />
+  <footer></footer>
 
   <style>
-    .siteHeader {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .siteNav {
-      display: flex;
-      gap: 1.25rem;
-      padding: 1rem 1.5rem;
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    .pageCloseBtn {
+      position: fixed;
+      top: 1.75rem;
+      right: 1.75rem;
+      z-index: 50;
       color: var(--color-ink);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s ease;
     }
-    .siteNav__link {
-      color: inherit;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-    }
-    .siteNav__link:hover {
-      text-decoration: underline;
-      text-underline-offset: 6px;
+    .pageCloseBtn:hover {
+      transform: scale(1.1);
     }
   </style>
 </Base>
-
