@@ -177,36 +177,26 @@ const { title = "Contact" } = Astro.props;
 </style>
 
 <style is:global>
-  /* Custom Scrollbar for the Contact Form & Textarea */
-  .contactOverlay::-webkit-scrollbar,
-  .contactOverlay *::-webkit-scrollbar,
+  /* Custom Scrollbar for Textarea */
   .field__control--textarea::-webkit-scrollbar {
     width: 24px;
     height: 24px;
   }
-  .contactOverlay::-webkit-scrollbar-track,
-  .contactOverlay *::-webkit-scrollbar-track,
   .field__control--textarea::-webkit-scrollbar-track {
     background: var(--color-bg-contact);
   }
-  .contactOverlay::-webkit-scrollbar-thumb,
-  .contactOverlay *::-webkit-scrollbar-thumb,
   .field__control--textarea::-webkit-scrollbar-thumb {
     background-color: var(--color-ink);
     border-radius: 999px;
     border: 5px solid var(--color-bg-contact);
     background-clip: padding-box;
   }
-  .contactOverlay::-webkit-scrollbar-button,
-  .contactOverlay *::-webkit-scrollbar-button,
   .field__control--textarea::-webkit-scrollbar-button {
     display: none;
   }
 
   /* Firefox standard scrollbar properties (Hidden from Chrome 121+) */
   @-moz-document url-prefix() {
-    .contactOverlay,
-    .contactOverlay *,
     .field__control--textarea {
       scrollbar-color: var(--color-ink) var(--color-bg-contact);
       scrollbar-width: auto;

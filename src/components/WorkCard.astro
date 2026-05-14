@@ -3,20 +3,24 @@ import { publicAsset } from "../i18n/utils";
 
 interface Props {
   title: string;
+  subtitle?: string;
   description: string;
   image: string;
   buttonText?: string;
   url?: string;
   repo?: string;
+  featured?: boolean;
 }
 
 const {
   title,
+  subtitle,
   description,
   image,
   buttonText = "View",
   url,
   repo,
+  featured = false,
 } = Astro.props;
 
 const normalizedImage =
@@ -29,14 +33,21 @@ const normalizedImage =
 const href = url ?? repo ?? "#";
 ---
 
-<article class="card">
+<article class={`card ${featured ? 'card--featured' : ''}`}>
   <div class="card__inner">
-    <h3 class="card__title">{title}</h3>
+    <div class="card__header">
+      <h3 class="card__title">{title}</h3>
+      {subtitle && <p class="card__subtitle">{subtitle}</p>}
+    </div>
     <div class="card__media">
       <img class="card__img" src={normalizedImage} alt="" loading="lazy" />
     </div>
     <p class="card__desc">{description}</p>
-    <a class="card__cta" href={href} target="_blank">{buttonText}</a>
+    <div class="card__actions">
+      {url && <a class="card__cta" href={url} target="_blank">{buttonText}</a>}
+      {repo && (!url || buttonText !== 'See code') && <a class="card__cta card__cta--secondary" href={repo} target="_blank">See code</a>}
+      {!url && !repo && <a class="card__cta" href="#" target="_blank">{buttonText}</a>}
+    </div>
   </div>
 </article>
 
@@ -47,46 +58,80 @@ const href = url ?? repo ?? "#";
     background: transparent;
     overflow: hidden;
   }
+  .card--featured {
+    grid-column: span 2;
+  }
   .card__inner {
     height: 100%;
     padding: 2rem 1.6rem;
-    display: grid;
-    align-content: start;
+    display: flex;
+    flex-direction: column;
     gap: 1.25rem;
+  }
+  .card__header {
+    display: grid;
+    gap: 0.25rem;
   }
   .card__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    object-position: center;
   }
   .card__media {
-    height: 170px;
+    height: 180px;
     border-radius: 6px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.25);
+    background: transparent;
+  }
+  .card--featured .card__media {
+    height: 320px;
   }
   .card__title {
     margin: 0;
     font-family: var(--font-display);
     font-size: 1.6rem;
     font-weight: 650;
+    line-height: 1.1;
+  }
+  .card--featured .card__title {
+    font-size: 2.2rem;
+  }
+  .card__subtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-ink-80);
+    font-weight: 500;
   }
   .card__desc {
     margin: 0;
     color: var(--color-ink-80);
     min-height: 2.2em;
+    flex-grow: 1;
+  }
+  .card--featured .card__desc {
+    font-size: 1.2rem;
+  }
+  .card__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: auto;
   }
   .card__cta {
-    width: max-content;
-    justify-self: center;
     border-radius: 6px;
     padding: 0.55rem 2.5rem;
-    border: 0;
+    border: 2px solid var(--color-ink);
     background: var(--color-ink);
     color: var(--color-white);
     text-decoration: none;
     letter-spacing: 0.02em;
     font-weight: 600;
+    text-align: center;
+  }
+  .card__cta--secondary {
+    background: transparent;
+    color: var(--color-ink);
   }
 </style>

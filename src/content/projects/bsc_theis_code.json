@@ -11,7 +11,8 @@
     "Segment Anything 2",
     "YOLOv9"
   ],
-  "url": "https://github.com/csesztii/bsc-thesis",
+  "repo": "https://github.com/csesztii/bsc-thesis",
+  "url": "",
   "image": "/works/bsc_thesis.jpg",
   "featured": true,
   "order": 1,

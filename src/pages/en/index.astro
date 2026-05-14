@@ -112,6 +112,9 @@ const locale = getLocaleFromUrl(Astro.url);
   </script>
 
   <style>
+    :global(html), :global(body) {
+      overflow: hidden;
+    }
     .page--home {
       background: var(--color-bg-home);
       color: var(--color-white);
@@ -246,6 +249,7 @@ const locale = getLocaleFromUrl(Astro.url);
       inset: 0;
       z-index: 5;
       overflow: auto;
+      --scrollbar-bg: var(--color-bg-contact);
       opacity: 0;
       visibility: hidden;
       transform: translateY(100px) scale(0.9) translateZ(0);
