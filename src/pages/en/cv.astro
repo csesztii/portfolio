@@ -1,106 +1,100 @@
 ---
-import Page from '../../layouts/Page.astro';
+import Page from "../../layouts/Page.astro";
 
-const title = 'CV';
-const description = 'Curriculum vitae';
+const title = "CV";
+const description = "Curriculum vitae";
 ---
 
 <Page title={title} description={description}>
   <section class="page page--cv">
     <div class="wrap">
-      <h1>CV</h1>
+      <h1>CURRICULUM VITAE</h1>
+      <a
+        class="download download--top"
+        href="/DHIK_Lebenslauf_Vorlage_English.pdf"
+        target="_blank"
+        rel="noopener noreferrer">Download CV in PDF format →</a
+      >
 
-      <div class="cols">
-        <section class="col">
+      <div class="cv-container">
+        <section class="cv-section">
           <h2>Education</h2>
-          <div class="scroll">
-            <div class="row">
-              <div class="date">10.2025 -</div>
-              <div class="txt">
-                <strong>M.Sc. in Computer Science</strong><br />
-                University of Freiburg, Freiburg im Breisgau, Germany
-              </div>
+          <div class="row">
+            <div class="date">10.2025 -</div>
+            <div class="txt">
+              <strong>M.Sc. in Computer Science</strong><br />
+              University of Freiburg, Freiburg im Breisgau, Germany
             </div>
-            <div class="row">
-              <div class="date">09.2022 - 07.2025</div>
-              <div class="txt">
-                <strong>B.Sc. in Computer Science</strong><br />
-                Eötvös Loránd University (ELTE), Budapest, Hungary<br /><br />
-                Specialization: Software Engineering<br />
-                Grade: Excellent (equivalent to [1,0] on the German grading scale)
-              </div>
+          </div>
+          <div class="row">
+            <div class="date">09.2022 - 07.2025</div>
+            <div class="txt">
+              <strong>B.Sc. in Computer Science</strong><br />
+              Eötvös Loránd University (ELTE), Budapest, Hungary<br /><br />
+              Specialization: Software Engineering<br />
+              Grade: Excellent (equivalent to [1,0] on the German grading scale)
             </div>
           </div>
         </section>
 
-        <div class="sep" aria-hidden="true"></div>
-
-        <section class="col col--mid">
+        <section class="cv-section">
           <h2>Experience</h2>
-          <div class="scroll">
-            <div class="row">
-              <div class="date">11.2025 -</div>
-              <div class="txt">
-                <strong>AI Team Manager</strong><br />
-                Safetrace, Budapest, Hungary<br /><br />
-                <span class="small">
-                  Led a team on an NLP-focused PII detection project, built training pipelines, and designed synthetic data generation pipelines for privacy-preserving model training.
-                </span>
-              </div>
+          <div class="row">
+            <div class="date">11.2025 -</div>
+            <div class="txt">
+              <strong>AI Team Manager</strong><br />
+              Safetrace, Budapest, Hungary<br />
+              <span class="small">
+                Led a team on an NLP-focused PII detection project, built
+                training pipelines, and designed synthetic data generation
+                pipelines for privacy-preserving model training.
+              </span>
             </div>
-            <div class="row">
-              <div class="date">07.2025 - 09.2025</div>
-              <div class="txt">
-                <strong>Machine Learning Engineer</strong><br />
-                HUN-REN SZTAKI – Institute for Computer Science and Control, Budapest, Hungary<br /><br />
-                <span class="small">
-                  Researched automated coronary artery calcification measurement from cardiac CT scans and applied TotalSegmentator for medical image segmentation.
-                </span>
-              </div>
+          </div>
+          <div class="row">
+            <div class="date">07.2025 - 09.2025</div>
+            <div class="txt">
+              <strong>Machine Learning Engineer</strong><br />
+              HUN-REN SZTAKI – Institute for Computer Science and Control, Budapest,
+              Hungary<br />
+              <span class="small">
+                Researched automated coronary artery calcification measurement
+                from cardiac CT scans and applied TotalSegmentator for medical
+                image segmentation.
+              </span>
             </div>
-            <div class="row">
-              <div class="date">03.2025 - 06.2025</div>
-              <div class="txt">
-                <strong>Machine Learning Intern</strong><br />
-                Max Planck Institute for Biological Intelligence, Munich, Germany<br /><br />
-                <span class="small">
-                  Built an end-to-end bird tracking pipeline using YOLOv8 and SAM2 and developed a Streamlit UI for researchers.
-                </span>
-              </div>
+          </div>
+          <div class="row">
+            <div class="date">03.2025 - 06.2025</div>
+            <div class="txt">
+              <strong>Machine Learning Intern</strong><br />
+              Max Planck Institute for Biological Intelligence, Munich, Germany<br
+              />
+              <span class="small">
+                Built an end-to-end bird tracking pipeline using YOLOv8 and SAM2
+                and developed a Streamlit UI for researchers.
+              </span>
             </div>
-
-            <div class="down" aria-hidden="true">⌄</div>
           </div>
         </section>
 
-        <div class="sep" aria-hidden="true"></div>
-
-        <section class="col">
+        <section class="cv-section">
           <h2>Skills and Interests</h2>
-          <div class="scroll">
-            <p class="skill">
-              <strong>Languages:</strong><br />
-              Hungarian: Native<br />
-              English: Proficient (Cambridge CAE, C1)<br />
-              German: Lower-Intermediate (B1 – actively studying)
-            </p>
-            <p class="skill">
-              <strong>Software & Technologies:</strong><br />
-              Proficient: Python (PyTorch, Pandas), JavaScript, React, HTML, CSS, Git<br />
-              Basic knowledge: C#, Java, WordPress, MS Office
-            </p>
-            <p class="skill">
-              <strong>Interests:</strong><br />
-              Music: Classically trained flute player; self-taught ukulele and guitar<br />
-              Design: Passionate about UI and web design<br />
-              Reading: Enthusiastic reader of literature and fiction
-            </p>
-            <p class="skill">
-              <strong>Extra:</strong> Mobility: Driver's licence, Category B
-            </p>
-
-            <a class="download" href="/DHIK_Lebenslauf_Vorlage_English.pdf" target="_blank" rel="noopener noreferrer">Download CV in PDF format →</a>
-          </div>
+          <p class="skill">
+            <strong>Languages:</strong><br />
+            Hungarian: Native<br />
+            English: Proficient (Cambridge CAE, C1)<br />
+            German: Lower-Intermediate (B1 – actively studying)
+          </p>
+          <p class="skill">
+            <strong>Software & Technologies:</strong><br />
+            Proficient: Python (PyTorch, Pandas), JavaScript, React, HTML, CSS, Git<br
+            />
+            Basic knowledge: C#, Java, WordPress, MS Office
+          </p>
+          <p class="skill">
+            <strong>Mobility:</strong> Driver's licence, Category B
+          </p>
         </section>
       </div>
     </div>
@@ -118,78 +112,81 @@ const description = 'Curriculum vitae';
       padding: 4.5rem 3.25rem;
     }
     h1 {
-      margin: 0 0 2rem 0;
+      margin: 0 0 1rem 0;
       font-family: var(--font-display);
-      font-size: 3rem;
+      font-size: 4rem;
       letter-spacing: -0.01em;
     }
-    .cols {
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr 1px 1fr;
-      gap: 2rem;
-      align-items: stretch;
+    .download--top {
+      margin-top: 0;
+      margin-bottom: 3rem;
     }
-    .sep {
-      background: var(--color-ink);
-      opacity: 0.9;
+    .cv-container {
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
     }
-    .col {
-      min-height: 640px;
-      display: grid;
-      grid-template-rows: auto 1fr;
+    .cv-section {
+      display: block;
     }
     h2 {
-      margin: 0 0 1rem 0;
-      font-size: 1.55rem;
+      margin: 0 0 2.5rem 0;
+      font-size: 2.2rem;
       text-decoration: underline;
-      text-underline-offset: 6px;
+      text-underline-offset: 8px;
       font-weight: 700;
-    }
-    .scroll {
-      overflow: auto;
-      padding-right: 0.75rem;
+      letter-spacing: -0.01em;
     }
     .row {
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 1rem;
-      margin-bottom: 1.6rem;
+      grid-template-columns: 200px 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
       align-items: start;
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
     }
     .date {
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
+      font-weight: 600;
+      opacity: 0.8;
     }
     .txt {
-      text-align: right;
+      text-align: left;
     }
     .small {
-      font-size: 0.8rem;
-      line-height: 1.35;
-      display: inline-block;
-      max-width: 440px;
-    }
-    .tiny {
-      font-size: 0.75rem;
-      opacity: 0.8;
-      margin-top: 0.35rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      display: block;
+      color: var(--color-ink);
+      opacity: 0.85;
+      margin-top: 0.75rem;
     }
     .skill {
-      margin: 0 0 1.25rem 0;
+      margin: 0 0 2rem 0;
+      font-size: 1.15rem;
+      line-height: 1.6;
     }
     .download {
       display: inline-block;
-      margin-top: 1.5rem;
+      margin-top: 3rem;
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 6px;
-      width: max-content;
+      font-size: 1.25rem;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
     }
-    .down {
-      text-align: center;
-      font-size: 2rem;
-      margin-top: 0.5rem;
+    .download:hover {
+      opacity: 0.7;
     }
   </style>
 </Page>
-
