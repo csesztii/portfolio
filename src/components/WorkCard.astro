@@ -1,5 +1,5 @@
 ---
-import { publicAsset } from '../i18n/utils';
+import { publicAsset } from "../i18n/utils";
 
 interface Props {
   title: string;
@@ -10,14 +10,23 @@ interface Props {
   repo?: string;
 }
 
-const { title, description, image, buttonText = 'View', url, repo } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  buttonText = "View",
+  url,
+  repo,
+} = Astro.props;
 
 const normalizedImage =
-  image.startsWith('http://') || image.startsWith('https://') || image.startsWith('data:')
+  image.startsWith("http://") ||
+  image.startsWith("https://") ||
+  image.startsWith("data:")
     ? image
-    : publicAsset(image.replace(/^\/+/, ''));
+    : publicAsset(image.replace(/^\/+/, ""));
 
-const href = url ?? repo ?? '#';
+const href = url ?? repo ?? "#";
 ---
 
 <article class="card">
@@ -27,7 +36,7 @@ const href = url ?? repo ?? '#';
       <img class="card__img" src={normalizedImage} alt="" loading="lazy" />
     </div>
     <p class="card__desc">{description}</p>
-    <a class="card__cta" href={href}>{buttonText}</a>
+    <a class="card__cta" href={href} target="_blank">{buttonText}</a>
   </div>
 </article>
 
@@ -81,4 +90,3 @@ const href = url ?? repo ?? '#';
     font-weight: 600;
   }
 </style>
-

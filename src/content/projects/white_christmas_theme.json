@@ -1,0 +1,14 @@
+{
+  "title": "White Christmas VSCode Theme",
+  "description": "A festive, cozy light theme designed to bring the holiday cheer to your code editor! Like a field of freshly fallen snow with the iconic green and red colors of the season.",
+  "tech": [
+    "Visual Studio Code Extension",
+    "Design",
+    "UI"
+  ],
+  "repo": "https://github.com/csesztii/white-christmas-theme",
+  "image": "/works/placeholder-2.svg",
+  "featured": false,
+  "order": 2,
+  "buttonText": "See code"
+}

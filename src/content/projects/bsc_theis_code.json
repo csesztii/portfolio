@@ -1,0 +1,19 @@
+{
+  "title": "Ruff Tracking in Multi-Camera Systems Using YOLO and SAM2",
+  "subtitle": "Bachelor Thesis",
+  "description": "Automatic detection, tracking, and zone classification of ruffs (a shorebird species) from three-camera video recordings, using YOLOv9 and SAM2. Built for biological research at the Max Planck Institute for Biological Intelligence.",
+  "tech": [
+    "Machine Learning",
+    "Computer Vision",
+    "Transfer Learning",
+    "Python",
+    "PyTorch",
+    "Segment Anything 2",
+    "YOLOv9"
+  ],
+  "url": "https://github.com/csesztii/bsc-thesis",
+  "image": "/works/bsc_thesis.jpg",
+  "featured": true,
+  "order": 1,
+  "buttonText": "View project"
+}
