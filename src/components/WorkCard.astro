@@ -39,10 +39,14 @@ const href = url ?? repo ?? "#";
       <h3 class="card__title">{title}</h3>
       {subtitle && <p class="card__subtitle">{subtitle}</p>}
     </div>
-    <div class="card__media">
-      <img class="card__img" src={normalizedImage} alt="" loading="lazy" />
+
+    <div class="card__body">
+      <div class="card__media">
+        <img class="card__img" src={normalizedImage} alt="" loading="lazy" />
+      </div>
+      <p class="card__desc">{description}</p>
     </div>
-    <p class="card__desc">{description}</p>
+
     <div class="card__actions">
       {
         url && (
@@ -52,16 +56,9 @@ const href = url ?? repo ?? "#";
         )
       }
       {
-        repo && (!url || buttonText !== "See code") && (
-          <a class="card__cta card__cta--secondary" href={repo} target="_blank">
-            See code
-          </a>
-        )
-      }
-      {
-        !url && !repo && (
-          <a class="card__cta" href="#" target="_blank">
-            {buttonText}
+        repo && (
+          <a class="card__cta" href={repo} target="_blank">
+            SEE CODE
           </a>
         )
       }
@@ -74,10 +71,14 @@ const href = url ?? repo ?? "#";
     border-radius: 10px;
     border: 2px solid var(--color-ink);
     background: transparent;
+    color: var(--color-ink);
     overflow: hidden;
   }
   .card--featured {
     grid-column: span 2;
+    background: var(--color-ink);
+    color: var(--color-bg-works);
+    border-color: var(--color-ink);
   }
   .card__inner {
     height: 100%;
@@ -86,17 +87,25 @@ const href = url ?? repo ?? "#";
     flex-direction: column;
     gap: 1.25rem;
   }
+  .card--featured .card__inner {
+    gap: 1.5rem;
+  }
+
   .card__header {
     display: grid;
     gap: 0.25rem;
   }
-  .card__img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    object-position: center;
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    flex-grow: 1;
   }
+  .card--featured .card__body {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+
   .card__media {
     height: 180px;
     border-radius: 6px;
@@ -104,12 +113,25 @@ const href = url ?? repo ?? "#";
     background: transparent;
   }
   .card--featured .card__media {
-    height: 320px;
+    flex: 0 0 45%;
+    max-width: 400px;
+    height: 260px;
   }
+  .card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    object-position: center;
+  }
+  .card--featured .card__img {
+    object-position: center;
+  }
+
   .card__title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 650;
     line-height: 1.1;
   }
@@ -119,37 +141,51 @@ const href = url ?? repo ?? "#";
   .card__subtitle {
     margin: 0;
     font-size: 1.5rem;
-    color: var(--color-ink-80);
+    color: inherit;
     font-weight: 300;
   }
   .card__desc {
     margin: 0;
-    color: var(--color-ink-80);
+    color: inherit;
     min-height: 2.2em;
-    flex-grow: 1;
+    font-size: 1.05rem;
   }
   .card--featured .card__desc {
-    font-size: 1.2rem;
+    flex: 1;
+    font-size: 1.15rem;
+    line-height: 1.6;
   }
+
   .card__actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
     margin-top: auto;
+    padding-top: 1rem;
   }
   .card__cta {
     border-radius: 6px;
-    padding: 0.55rem 2.5rem;
+    padding: 0.6rem 2rem;
     border: 2px solid var(--color-ink);
     background: var(--color-ink);
-    color: var(--color-white);
+    color: var(--color-bg-works);
     text-decoration: none;
     letter-spacing: 0.02em;
     font-weight: 600;
     text-align: center;
+    text-transform: uppercase;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
   }
-  .card__cta--secondary {
-    background: transparent;
+  .card__cta:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+  .card--featured .card__cta {
+    border-color: var(--color-bg-works);
+    background: var(--color-bg-works);
     color: var(--color-ink);
   }
 </style>
