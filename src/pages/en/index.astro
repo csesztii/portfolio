@@ -16,7 +16,16 @@ const locale = getLocaleFromUrl(Astro.url);
         <div class="leftInner" id="left-content">
           <img class="avatar" src={publicAsset("media/profile.jpeg")} alt="" />
           <h1 class="name">Eszter Molnár</h1>
-          <p class="intro">M.Sc. Student in Computer Science.</p>
+          <p class="intro">
+            I am a computer scientist currently pursuing a Master's degree in
+            AI, which expands on my Bachelor's in Computer Science. My technical
+            experience is broad: I am skilled in software engineering, AI, data
+            science, and web development. What sets my work apart is my creative
+            approach. I don't just focus on the technical side, but I enjoy
+            finding unique solutions and thinking about the user's experience,
+            which leads to building products that are both effective and easy to
+            use.
+          </p>
           <a class="readcv" href={localePath("/cv", locale)}>Read my CV →</a>
 
           <div class="globeWrap">
@@ -93,19 +102,36 @@ const locale = getLocaleFromUrl(Astro.url);
       const slot = document.getElementById("contact-slot");
       const close = document.getElementById("contact-close");
       const nav = document.getElementById("home-nav");
+      const homeSection = document.querySelector(".home__left");
+
+      function closeContact() {
+        if (slot) slot.classList.remove("is-open");
+        if (nav) nav.hidden = false;
+        document.documentElement.style.overflow = "";
+      }
 
       if (open && slot) {
-        open.addEventListener("click", () => {
+        open.addEventListener("click", (e) => {
+          e.stopPropagation();
           slot.classList.add("is-open");
           if (nav) nav.hidden = true;
           document.documentElement.style.overflow = "hidden";
         });
       }
       if (close && slot) {
-        close.addEventListener("click", () => {
-          slot.classList.remove("is-open");
-          if (nav) nav.hidden = false;
-          document.documentElement.style.overflow = "";
+        close.addEventListener("click", closeContact);
+      }
+
+      // Close contact when clicking outside the overlay (on the home page area)
+      if (homeSection) {
+        homeSection.addEventListener("click", (e) => {
+          if (
+            slot &&
+            slot.classList.contains("is-open") &&
+            !slot.contains(e.target as Node)
+          ) {
+            closeContact();
+          }
         });
       }
     });
@@ -138,8 +164,8 @@ const locale = getLocaleFromUrl(Astro.url);
     }
     @media (min-width: 1440px) {
       .home__left {
-        padding-left: 10rem;
-        padding-top: 8rem;
+        padding-left: 5rem;
+        padding-top: 4rem;
       }
     }
     .leftInner {
@@ -161,10 +187,11 @@ const locale = getLocaleFromUrl(Astro.url);
       font-weight: 500;
     }
     .intro {
+      display: none;
       margin: 0;
       opacity: 0.92;
       max-width: 28rem;
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
     .readcv {
       color: inherit;
