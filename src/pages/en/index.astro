@@ -144,14 +144,19 @@ const locale = getLocaleFromUrl(Astro.url);
   <style>
     :global(html),
     :global(body) {
-      overflow: hidden;
+      /* scrolling enabled, scrollbar hidden */
+      overflow-y: scroll;
+      scrollbar-width: none; /* Firefox */
+    }
+    :global(html)::-webkit-scrollbar,
+    :global(body)::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Edge */
     }
     .page--home {
       background: var(--color-bg-home);
       color: var(--color-white);
       min-height: 100vh;
       display: grid;
-      overflow: hidden; /* no visible scrollbars on desktop layout */
     }
     .home {
       width: 100%;
@@ -176,11 +181,14 @@ const locale = getLocaleFromUrl(Astro.url);
       display: grid;
       align-content: start;
       justify-content: center;
+      max-width: 80%;
+      min-width: 70%;
       gap: 1rem;
     }
     .avatar {
-      width: 260px;
-      height: 260px;
+      /* width: 260px;
+      height: 260px; */
+      width: 40%;
       object-fit: cover;
       margin: auto;
       border-radius: 10px;
@@ -197,7 +205,6 @@ const locale = getLocaleFromUrl(Astro.url);
     .intro {
       margin: 0;
       opacity: 0.92;
-      max-width: 28rem;
       font-size: 1rem;
       text-align: justify;
       font-weight: 300;
