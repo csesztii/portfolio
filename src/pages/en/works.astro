@@ -63,9 +63,53 @@ const projects = (await getCollection("projects"))
       gap: 1.5rem;
       align-items: stretch;
     }
+
+    @keyframes floatUp {
+      from {
+        opacity: 0;
+        transform: translateY(36px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .grid :global(.card) {
+      opacity: 0;
+    }
+
+    .grid :global(.card.is-visible) {
+      animation: floatUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
     .hint {
       margin: 2rem 0 0 0;
       color: var(--color-ink-80);
     }
   </style>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const cards = document.querySelectorAll(".grid .card");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(entry.target);
+              const card = entry.target as HTMLElement;
+              // Stagger by column position within the 3-column grid
+              const index = Array.from(cards).indexOf(card);
+              const col = index % 3;
+              card.style.animationDelay = `${col * 80}ms`;
+              card.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+
+      cards.forEach((card) => observer.observe(card));
+    });
+  </script>
 </Page>
