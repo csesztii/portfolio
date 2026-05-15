@@ -1,5 +1,6 @@
 {
-  "title": "ExploDucks - Custom Bomberman Implementation in Unity",
+  "title": "ExploDucks",
+  "subtitle": "Custom Bomberman Implementation in Unity",
   "description": "Short description goes here.",
   "tech": [
     "TypeScript",
@@ -8,6 +9,6 @@
   "repo": "https://github.com/example/repo",
   "image": "/works/placeholder-2.svg",
   "featured": false,
-  "order": 2,
+  "order": 3,
   "buttonText": "See code"
 }

@@ -88,12 +88,12 @@ const locale = getLocaleFromUrl(Astro.url);
   </section>
 
   <script>
-    document.addEventListener('astro:page-load', () => {
+    document.addEventListener("astro:page-load", () => {
       const open = document.getElementById("contact-open");
       const slot = document.getElementById("contact-slot");
       const close = document.getElementById("contact-close");
       const nav = document.getElementById("home-nav");
-      
+
       if (open && slot) {
         open.addEventListener("click", () => {
           slot.classList.add("is-open");
@@ -112,7 +112,8 @@ const locale = getLocaleFromUrl(Astro.url);
   </script>
 
   <style>
-    :global(html), :global(body) {
+    :global(html),
+    :global(body) {
       overflow: hidden;
     }
     .page--home {
@@ -177,14 +178,16 @@ const locale = getLocaleFromUrl(Astro.url);
     .globeWrap {
       position: absolute;
       top: 2.25rem;
-      right: 2.25rem; /* close to page horizontal middle (left column edge) */
+      left: 2.25rem; /* close to page horizontal middle (left column edge) */
       width: max-content;
     }
     .globe {
       width: max-content;
       opacity: 0.95;
       cursor: default;
-      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+      transition:
+        transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.4s ease;
     }
     .globeWrap:hover .globe {
       transform: rotate(360deg) scale(0);
@@ -193,14 +196,17 @@ const locale = getLocaleFromUrl(Astro.url);
     .lang {
       position: absolute;
       top: 0px;
-      left: -100px;
+      right: -120px;
       background: var(--color-white);
       color: var(--color-ink);
       padding: 1.25rem 2.5rem;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-15px);
-      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease;
       gap: 0.5rem;
       text-align: center;
       font-size: 1.05rem;
@@ -253,14 +259,20 @@ const locale = getLocaleFromUrl(Astro.url);
       opacity: 0;
       visibility: hidden;
       transform: translateY(100px) scale(0.9) translateZ(0);
-      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease;
       will-change: transform, opacity, visibility;
     }
     .contactOverlay.is-open {
       opacity: 1;
       visibility: visible;
       transform: translateY(0) scale(1) translateZ(0);
-      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .closeBtn {
       position: absolute;
@@ -301,7 +313,9 @@ const locale = getLocaleFromUrl(Astro.url);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       background: rgba(255, 255, 255, 0.02);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
       will-change: box-shadow, transform;
       transform: translateZ(0);
     }

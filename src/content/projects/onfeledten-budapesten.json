@@ -1,14 +1,15 @@
 {
-  "title": "Önfeledten Budapesten - Hungarian Website of Budapest",
+  "title": "Önfeledten Budapesten (HU)",
+  "subtitle": "Hungarian Website of Budapest",
   "description": "Created for a university project, with my own design and pictures",
   "tech": [
     "TypeScript",
     "UI"
   ],
   "url": "https://csesztii.github.io/onfeledten-budapesten/",
-  "repo": "https://github.com/example/repo",
+  "repo": "https://github.com/csesztii/onfeledten-budapesten",
   "image": "/works/placeholder-2.svg",
   "featured": false,
-  "order": 2,
-  "buttonText": "See code"
+  "order": 4,
+  "buttonText": "See site"
 }
