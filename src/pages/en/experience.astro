@@ -10,55 +10,105 @@ const description = "Experience";
     <div class="wrap">
       <h1>EXPERIENCE</h1>
 
-      <h2>AI Team Manager, Safetrace</h2>
-      <ul>
-        <li>
-          Led a team of up to 5 engineers on an NLP-focused PII detection
-          project
-        </li>
-        <li>
-          Built the core model training and evaluation pipeline in Python with
-          HuggingFace
-        </li>
-        <li>
-          Fine-tuned XLM-RoBERTa for token classification on proprietary
-          datasets
-        </li>
-        <li>
-          Designed a synthetic data generation pipeline for privacy-preserving
-          model training
-        </li>
-      </ul>
+      <!-- Main Profile Card -->
+      <div class="profile-card reveal">
+        <h2 class="profile-title">Main Profile</h2>
+        <ul class="profile-list">
+          <li>
+            AI, Deep Learning, Computer Vision (model training, training data
+            gathering, labeling, augmentation), LLMs (training, HuggingFace
+            framework, training monitoring and evaluating, dataset generation)
+          </li>
+          <li>
+            Python, Pytorch, Pandas, Numpy – all the essentials for working with
+            ML
+          </li>
+          <li>
+            Webdevelopment: HTML, JavaScript, CSS (as hobby sometimes writes
+            plain css without any frameworks), Astro, React, Streamlit (python
+            based)
+          </li>
+          <li>
+            degree in Computer Science – experience with most programming
+            languages, basic syntax, algorithms and data structures
+          </li>
+        </ul>
+      </div>
 
-      <h2>
-        Machine Learning Engineer, HUN-REN SZTAKI – Institute for Computer
-        Science and Control, Budapest
-      </h2>
-      <ul>
-        <li>
-          Researched automated coronary artery calcification measurement from
-          cardiac CT scans
-        </li>
-        <li>
-          Applied TotalSegmentator for medical image segmentation and evaluated
-          multiple methodologies
-        </li>
-      </ul>
+      <!-- AI Team Manager -->
+      <div class="job reveal">
+        <h3 class="job-title">AI Team Manager</h3>
+        <p class="job-company">Safetrace</p>
+        <p class="job-desc">
+          Team is responsible for the research in novelty AI and implementing
+          the AI-based solutions which moves forward the whole company
+        </p>
+        <p class="job-desc">
+          My role is to hold the meetings, talk about and hand out the tasks,
+          keep in contact with the team members
+        </p>
+        <p class="job-desc">
+          Also do the tasks myself, implemented the basic training pipeline for
+          the project, used XLM roberta for token classification and our ows
+          dataset
+        </p>
+        <p class="job-desc">
+          Took part in the making of our own training dataset
+        </p>
+        <p class="job-desc">
+          Experience gain: working with LLMs, monitoring and evaluating training
+          processess, Hyperparameter Optimization, responsible working, how to
+          coordinate a small set of people, organization
+        </p>
+      </div>
 
-      <h2>
-        Machine Learning Intern, Max Planck Institute for Biological
-        Intelligence, Munich
-      </h2>
-      <ul>
-        <li>
-          Built an end-to-end bird tracking pipeline using YOLOv8 and SAM2 from
-          scratch; achieved 95% precision and 82% recall
-        </li>
-        <li>
-          Developed a Streamlit UI enabling non-technical researchers to operate
-          the system independently
-        </li>
-      </ul>
+      <!-- Machine Learning Engineer -->
+      <div class="job reveal">
+        <h3 class="job-title">Machine Learning Engineer</h3>
+        <p class="job-company">
+          HUN-REN SZTAKI Institute for Computer Science and Control, Budapest
+        </p>
+        <p class="job-desc">
+          Main task: coronary artery calcification measurement and help doctors
+          with diagnosing
+        </p>
+        <p class="job-desc">Used model(s): Totalsegmentator</p>
+        <p class="job-desc">
+          Worked with CT scans of heart, too little data for training a deep
+          learning model, did EDA on accessible data from patients, researched
+          possible solutions, image processing with tools (slicer 3d,
+          pointclouds, python)
+        </p>
+        <p class="job-desc">Research assistand</p>
+        <p class="job-desc">
+          Experience gain: working in a reserach institute, attending events,
+          research methodologies, digital health, CT scans and medical document
+          processing
+        </p>
+      </div>
+
+      <!-- Research Intern -->
+      <div class="job reveal">
+        <h3 class="job-title">Research Intern</h3>
+        <p class="job-company">
+          Max Planck Institute for Biological Intelligence, Munich
+        </p>
+        <p class="job-desc">
+          I was working on my bsc thesis on site – introduction to the
+          workspace, the leks, the camera settings, the biologist. created the
+          training pipeline for training the YOLO model for object detection on
+          ruffs, created the inferenc pipeline for detecting and tracing the
+          birds from videos using the detections of YOLO to prompt SAM2. created
+          an interactive User Interface for the biologists to use the tool. the
+          output is the location of each birds (according to the zones) with
+          ids.
+        </p>
+        <p class="job-desc">
+          Experience gain: working with convolutional networks, computer vision
+          tasks, labelling and creating data from video segments for training,
+          camera calibration, 2D points to 3D projection, streamlit
+        </p>
+      </div>
     </div>
   </section>
 
@@ -76,32 +126,119 @@ const description = "Experience";
     .wrap {
       max-width: 1240px;
       margin: 0 auto;
-      padding: 4.5rem 3.25rem;
+      padding: 4.5rem 3.25rem 6rem;
     }
+
     h1 {
-      margin: 0 0 2.5rem 0;
+      margin: 0 0 2rem 0;
       font-family: var(--font-display);
       letter-spacing: -0.01em;
       font-size: 4rem;
     }
-    h2 {
-      margin: 0 0 0.75rem 0;
-      font-size: 1.15rem;
-      font-weight: 500;
+
+    /* ── Main Profile Card ──────────────────────────────── */
+    .profile-card {
+      background: var(--color-ink);
+      color: var(--color-bg-experience);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .profile-title {
       font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: var(--color-bg-experience);
     }
-    p,
-    ul {
-      margin: 0 0 2rem 0;
-      color: var(--color-ink-80);
-      max-width: 1100px;
+
+    .profile-list {
+      margin: 0;
+      padding-left: 1.3rem;
+      color: var(--color-bg-experience);
+      font-size: 1.15rem;
       line-height: 1.65;
+      list-style: disc;
     }
-    ul {
-      padding-left: 1.5rem;
+
+    .profile-list li {
+      margin-bottom: 0.55rem;
     }
-    li {
-      margin-bottom: 0.5rem;
+
+    /* ── Job Entry ──────────────────────────────────────── */
+    .job {
+      margin-bottom: 2.75rem;
+      padding-bottom: 2.75rem;
+      border-bottom: 1px solid var(--color-ink);
+    }
+
+    .job:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .job-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem 0;
+      color: var(--color-ink);
+    }
+
+    .job-company {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 0 0 0.85rem 0;
+      color: var(--color-ink);
+    }
+
+    .job-desc {
+      font-size: 1.15rem;
+      line-height: 1.65;
+      margin: 0 0 0.2rem 0;
+      color: var(--color-ink);
+    }
+
+    /* ── Float-up entrance animation ───────────────────── */
+    @keyframes floatUp {
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+    }
+
+    .reveal.is-visible {
+      animation: floatUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
   </style>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const items = document.querySelectorAll(".page--experience .reveal");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(entry.target);
+              const el = entry.target as HTMLElement;
+              const index = Array.from(items).indexOf(el);
+              el.style.animationDelay = `${index * 90}ms`;
+              el.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.05 },
+      );
+
+      items.forEach((item) => observer.observe(item));
+    });
+  </script>
 </Page>
