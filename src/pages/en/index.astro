@@ -219,8 +219,6 @@ const locale = getLocaleFromUrl(Astro.url);
       gap: 1rem;
     }
     .avatar {
-      /* width: 260px;
-      height: 260px; */
       width: 40%;
       object-fit: cover;
       margin: auto;
@@ -416,11 +414,11 @@ const locale = getLocaleFromUrl(Astro.url);
       transform: translateY(-2px) translateZ(0);
     }
     .bigBtn--exp {
-      color: #e0aaff;
-      box-shadow: 0 0 16px rgba(224, 170, 255, 0.35);
+      color: var(--color-bg-experience);
+      box-shadow: 0 0 16px rgba(189, 178, 255, 0.35);
     }
     .bigBtn--exp:hover {
-      box-shadow: 0 0 40px rgba(224, 170, 255, 0.8);
+      box-shadow: 0 0 40px rgba(189, 178, 255, 0.8);
     }
     .bigBtn--works {
       color: #90e0ef;

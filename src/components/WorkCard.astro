@@ -76,11 +76,18 @@ const href = url ?? repo ?? "#";
 <style>
   .card {
     border-radius: 10px;
-    border: 2px solid var(--color-ink);
+    /* border: 2px solid var(--color-ink); */
+    border: 2px solid #62b5c4;
     background: transparent;
     color: var(--color-ink);
     overflow: hidden;
   }
+
+  .card:hover {
+    border: 2px solid var(--color-ink);
+    box-shadow: 0 0 16px rgba(34, 34, 59, 0.29);
+  }
+
   .card--featured {
     grid-column: span 2;
     background: var(--color-ink);
