@@ -115,8 +115,12 @@ const href = url ?? repo ?? "#";
 
   /* Skeleton shimmer while image loads */
   @keyframes shimmer {
-    0%   { background-position: -200% 0; }
-    100% { background-position:  200% 0; }
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
   }
   .card__media {
     height: 180px;
@@ -235,7 +239,9 @@ const href = url ?? repo ?? "#";
       } else {
         el.addEventListener("load", reveal, { once: true });
         // If it errors (broken src) just show the shimmer-less container
-        el.addEventListener("error", () => media?.classList.add("is-loaded"), { once: true });
+        el.addEventListener("error", () => media?.classList.add("is-loaded"), {
+          once: true,
+        });
       }
     });
   });

@@ -1,15 +1,16 @@
 {
   "title": "Daily Wordle Christmas Calendar",
   "subtitle": "Personal website",
-  "description": "A festive, cozy light theme designed to bring the holiday cheer to your code editor! Like a field of freshly fallen snow with the iconic green and red colors of the season.",
+  "description": "This is a project I created for my family in 2025. The site functions as a chritsmas calendar, there is a new word to guess every day until christmas. The hosted site is a demo version translated to English, and has the same word every day. It is a representation of the original project.",
   "tech": [
-    "Visual Studio Code Extension",
-    "Design",
-    "UI"
+    "HTML",
+    "CSS",
+    "JavaScript"
   ],
-  "repo": "https://github.com/csesztii/white-christmas-theme",
-  "image": "/works/placeholder-2.svg",
+  "repo": "https://github.com/csesztii/2025-christmas-calendar/tree/demo",
+  "url": "https://csesztii.github.io/2025-christmas-calendar/",
+  "image": "/works/christmas_calendar.png",
   "featured": false,
   "order": 5,
-  "buttonText": "See code"
+  "buttonText": "See site"
 }
