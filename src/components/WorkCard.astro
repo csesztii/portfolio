@@ -42,7 +42,14 @@ const href = url ?? repo ?? "#";
 
     <div class="card__body">
       <div class="card__media">
-        <img class="card__img" src={normalizedImage} alt="" loading="lazy" />
+        <img
+          class="card__img"
+          src={normalizedImage}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          data-card-img
+        />
       </div>
       <p class="card__desc">{description}</p>
     </div>
@@ -106,11 +113,28 @@ const href = url ?? repo ?? "#";
     align-items: flex-start;
   }
 
+  /* Skeleton shimmer while image loads */
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
   .card__media {
     height: 180px;
     border-radius: 6px;
     overflow: hidden;
+    background: linear-gradient(
+      90deg,
+      rgba(34, 34, 59, 0.08) 25%,
+      rgba(34, 34, 59, 0.16) 50%,
+      rgba(34, 34, 59, 0.08) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease infinite;
+  }
+  /* Stop shimmer once img has loaded (class toggled by script) */
+  .card__media.is-loaded {
     background: transparent;
+    animation: none;
   }
   .card--featured .card__media {
     flex: 0 0 45%;
@@ -123,6 +147,12 @@ const href = url ?? repo ?? "#";
     object-fit: cover;
     display: block;
     object-position: center;
+    /* Start invisible; fade in once loaded */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .card__img.is-loaded {
+    opacity: 1;
   }
   .card--featured .card__img {
     object-position: center;
@@ -187,3 +217,26 @@ const href = url ?? repo ?? "#";
     color: var(--color-ink);
   }
 </style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll("img[data-card-img]").forEach((img) => {
+      const el = img as HTMLImageElement;
+      const media = el.closest(".card__media") as HTMLElement | null;
+
+      const reveal = () => {
+        el.classList.add("is-loaded");
+        media?.classList.add("is-loaded");
+      };
+
+      if (el.complete && el.naturalWidth > 0) {
+        // Already cached — reveal immediately
+        reveal();
+      } else {
+        el.addEventListener("load", reveal, { once: true });
+        // If it errors (broken src) just show the shimmer-less container
+        el.addEventListener("error", () => media?.classList.add("is-loaded"), { once: true });
+      }
+    });
+  });
+</script>

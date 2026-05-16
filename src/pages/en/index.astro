@@ -15,12 +15,12 @@ const locale = getLocaleFromUrl(Astro.url);
       <section class="home__left">
         <div class="leftInner" id="left-content">
           <img
-            class="avatar"
+            class="avatar reveal"
             src={publicAsset("media/profile.jpeg")}
             alt="Eszter Molnár"
           />
-          <h1 class="name">Eszter Molnár</h1>
-          <p class="intro">
+          <h1 class="name reveal">Eszter Molnár</h1>
+          <p class="intro reveal">
             I am a computer scientist currently pursuing a Master's degree in
             AI, which expands on my Bachelor's in Computer Science. My technical
             experience is broad: I am skilled in software engineering, AI, data
@@ -30,9 +30,11 @@ const locale = getLocaleFromUrl(Astro.url);
             which leads to building products that are both effective and easy to
             use.
           </p>
-          <a class="readcv" href={localePath("/cv", locale)}>Read my CV →</a>
+          <a class="readcv reveal" href={localePath("/cv", locale)}
+            >Read my CV →</a
+          >
 
-          <div class="globeWrap">
+          <div class="globeWrap reveal">
             <div class="globe" aria-hidden="true">
               <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
                 <circle
@@ -58,7 +60,7 @@ const locale = getLocaleFromUrl(Astro.url);
             </div>
           </div>
 
-          <button class="contactBtn" id="contact-open" type="button"
+          <button class="contactBtn reveal" id="contact-open" type="button"
             >CONTACT</button
           >
         </div>
@@ -88,13 +90,17 @@ const locale = getLocaleFromUrl(Astro.url);
 
       <section class="home__right">
         <div class="navBtns" id="home-nav">
-          <a class="bigBtn bigBtn--exp" href={localePath("/experience", locale)}
-            >EXPERIENCE</a
+          <a
+            class="bigBtn bigBtn--exp reveal"
+            href={localePath("/experience", locale)}>EXPERIENCE</a
           >
-          <a class="bigBtn bigBtn--works" href={localePath("/works", locale)}
-            >WORKS</a
+          <a
+            class="bigBtn bigBtn--works reveal"
+            href={localePath("/works", locale)}>WORKS</a
           >
-          <a class="bigBtn bigBtn--cv" href={localePath("/cv", locale)}>CV</a>
+          <a class="bigBtn bigBtn--cv reveal" href={localePath("/cv", locale)}
+            >CV</a
+          >
         </div>
       </section>
     </div>
@@ -102,6 +108,33 @@ const locale = getLocaleFromUrl(Astro.url);
 
   <script>
     document.addEventListener("astro:page-load", () => {
+      // ── Float-up entrance animation ──────────────────────────────────
+      const leftItems = document.querySelectorAll(".home__left .reveal");
+      const rightItems = document.querySelectorAll(".home__right .reveal");
+
+      // One shared observer for both panels
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(entry.target);
+              const el = entry.target as HTMLElement;
+              const inLeft = !!el.closest(".home__left");
+              const list = inLeft ? leftItems : rightItems;
+              const baseDelay = inLeft ? 0 : 120;
+              const index = Array.from(list).indexOf(el);
+              el.style.animationDelay = `${baseDelay + index * 80}ms`;
+              el.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.01 },
+      );
+
+      leftItems.forEach((el) => observer.observe(el));
+      rightItems.forEach((el) => observer.observe(el));
+      // ────────────────────────────────────────────────────────────────
+
       const open = document.getElementById("contact-open");
       const slot = document.getElementById("contact-slot");
       const close = document.getElementById("contact-close");
@@ -166,7 +199,7 @@ const locale = getLocaleFromUrl(Astro.url);
     }
     .home__left {
       position: relative;
-      padding: 2rem 2.5rem;
+      padding: 5rem 2.5rem;
       display: grid;
       align-content: start;
       overflow: hidden;
@@ -344,6 +377,22 @@ const locale = getLocaleFromUrl(Astro.url);
       justify-content: space-around;
       gap: 0;
     }
+    /* Float-up entrance animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .reveal {
+      opacity: 0;
+    }
+    .reveal.is-visible {
+      animation: fadeIn 0.6s ease both;
+    }
+
     .bigBtn {
       height: 25%;
       display: grid;
