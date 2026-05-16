@@ -74,9 +74,17 @@ const { title = "Contact" } = Astro.props;
   <form
     class="form"
     id="contact-form"
+    method="post"
+    action="https://formsubmit.co/mol.eszter04@gmail.com"
   >
     <h2 class="form__title">Contact Me!</h2>
     <p class="form__cta">Fill in the form below to get in touch with me!</p>
+    <input
+      type="hidden"
+      name="_next"
+      value="https://csesztii.github.io/portfolio/en/"
+    />
+    <input type="hidden" name="_captcha" value="false" />
     <input type="hidden" name="_honey" style="display:none" />
     <div class="row">
       <label class="field">
@@ -126,8 +134,7 @@ const { title = "Contact" } = Astro.props;
         maxlength="2000"></textarea>
     </label>
 
-    <button class="button button--primary" type="submit" id="contact-submit">SEND</button>
-    <p class="form__status" id="form-status" aria-live="polite"></p>
+    <button class="button button--primary" type="submit">SEND</button>
   </form>
 </section>
 
@@ -254,8 +261,12 @@ const { title = "Contact" } = Astro.props;
     min-height: 1.4em;
     justify-self: end;
   }
-  .form__status--ok  { color: #1a7f37; }
-  .form__status--err { color: #cf222e; }
+  .form__status--ok {
+    color: #1a7f37;
+  }
+  .form__status--err {
+    color: #8d515a;
+  }
 </style>
 
 <style is:global>
@@ -284,44 +295,3 @@ const { title = "Contact" } = Astro.props;
     }
   }
 </style>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const form   = document.getElementById("contact-form") as HTMLFormElement | null;
-    const btn    = document.getElementById("contact-submit") as HTMLButtonElement | null;
-    const status = document.getElementById("form-status") as HTMLElement | null;
-    if (!form || !btn || !status) return;
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.textContent = "Sending…";
-      status.textContent = "";
-      status.className = "form__status";
-
-      const data = new FormData(form);
-
-      try {
-        const res = await fetch("https://formsubmit.co/ajax/mol.eszter04@gmail.com", {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: data,
-        });
-
-        if (res.ok) {
-          status.textContent = "✓ Message sent! I'll get back to you soon.";
-          status.classList.add("form__status--ok");
-          form.reset();
-        } else {
-          throw new Error(`HTTP ${res.status}`);
-        }
-      } catch {
-        status.textContent = "✗ Something went wrong — please email me directly at mol.eszter04@gmail.com";
-        status.classList.add("form__status--err");
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "SEND";
-      }
-    });
-  });
-</script>
