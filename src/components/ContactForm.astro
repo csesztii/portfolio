@@ -267,6 +267,14 @@ const { title = "Contact" } = Astro.props;
   .form__status--err {
     color: #8d515a;
   }
+
+  @media (max-width: 768px) {
+    /* First/last name stack full-width like email on mobile */
+    .row {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
 </style>
 
 <style is:global>
