@@ -105,7 +105,7 @@ const mobTitle = isHome ? "" : title.toUpperCase();
         class="mob-nav__band mob-nav__band--cv"
         href={localePath("/cv", locale)}
       >
-        <span class={`mob-nav__label${title === "CV" ? " is-active" : ""}`}
+        <span class={`mob-nav__label${title === "Curriculum Vitae" || title === "CV" ? " is-active" : ""}`}
           >CV</span
         >
       </a>
