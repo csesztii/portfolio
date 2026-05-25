@@ -293,7 +293,7 @@ const description = "Curriculum vitae";
         transform: translateY(0);
       }
     }
-    .reveal {
+    .reveal.is-hidden {
       opacity: 0;
     }
     .reveal.is-visible {
@@ -363,6 +363,7 @@ const description = "Curriculum vitae";
               const el = entry.target as HTMLElement;
               const index = Array.from(sections).indexOf(el);
               el.style.animationDelay = `${index * 100}ms`;
+              el.classList.remove("is-hidden");
               el.classList.add("is-visible");
             }
           });
@@ -370,7 +371,14 @@ const description = "Curriculum vitae";
         { threshold: 0.05 },
       );
 
-      sections.forEach((s) => observer.observe(s));
+      sections.forEach((s) => {
+        const rect = (s as HTMLElement).getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!inView) {
+          (s as HTMLElement).classList.add("is-hidden");
+        }
+        observer.observe(s);
+      });
     });
   </script>
 </Page>
