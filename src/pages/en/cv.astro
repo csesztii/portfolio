@@ -1,7 +1,7 @@
 ---
 import Page from "../../layouts/Page.astro";
 
-const title = "CV";
+const title = "Curriculum Vitae";
 const description = "Curriculum vitae";
 ---
 
@@ -298,6 +298,56 @@ const description = "Curriculum vitae";
     }
     .reveal.is-visible {
       animation: floatUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* ════════════════════ MOBILE ≤ 768px ════════════════════ */
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 5rem 1.2rem 3rem;
+      }
+      h1 {
+        display: none;
+      }
+      /* Single column: left border removed, padding reset */
+      .cv-left {
+        border-right: none;
+        padding-right: 0;
+      }
+      .cv-right {
+        padding-left: 0;
+        margin-top: 2rem;
+      }
+      /* Section headings left-aligned on mobile */
+      h2 {
+        text-align: left;
+      }
+      .cv-right h2 {
+        text-align: left;
+      }
+
+      /* Date on its own line, right-aligned; content below left-aligned */
+      .row {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
+      }
+      .date {
+        text-align: right;
+        font-size: 1.05rem;
+      }
+      .txt {
+        text-align: left;
+        font-size: 1.15rem;
+      }
+
+      /* Dashed separator between sibling .row elements */
+      .row + .row::before {
+        content: "- - - - - - - - - - - - -";
+        display: block;
+        text-align: center;
+        letter-spacing: 0.1em;
+        font-size: 0.95rem;
+        margin: 1.2rem 0;
+      }
     }
   </style>
 

@@ -174,6 +174,12 @@ const locale = getLocaleFromUrl(Astro.url);
     });
   </script>
 
+  <style is:global>
+    :root {
+      --scrollbar-bg: var(--color-bg-home);
+      --mob-header-ink: var(--color-white);
+    }
+  </style>
   <style>
     :global(html),
     :global(body) {
@@ -433,6 +439,62 @@ const locale = getLocaleFromUrl(Astro.url);
     }
     .bigBtn--cv:hover {
       box-shadow: 0 0 40px rgba(255, 214, 165, 0.8);
+    }
+
+    /* ════════════════════ MOBILE ≤ 768px ════════════════════ */
+    @media (max-width: 768px) {
+      .home {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .home__left {
+        padding: 5rem 0rem 0rem;
+        overflow: visible;
+        min-height: unset;
+      }
+      .leftInner {
+        max-width: 100%;
+        min-width: unset;
+        width: 100%;
+        align-items: center;
+        padding: 0rem 2.7rem 2rem;
+      }
+      .avatar {
+        width: 55%;
+        max-width: 220px;
+      }
+      .name {
+        font-size: 2.4rem;
+      }
+      .intro {
+        font-size: 1rem;
+      }
+      /* Globe/language switcher → in hamburger nav on mobile */
+      .globeWrap {
+        display: none;
+      }
+      /* CONTACT button hidden — form is always visible below */
+      .contactBtn {
+        display: none;
+      }
+      /* Right panel (big nav buttons) hidden on mobile */
+      .home__right {
+        display: none;
+      }
+      /* Contact overlay becomes always-visible inline section */
+      .contactOverlay {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+        will-change: auto;
+        overflow: visible;
+      }
+      /* Hide close button inside the overlay on mobile */
+      .closeBtn {
+        display: none;
+      }
     }
   </style>
 </Page>
