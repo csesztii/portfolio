@@ -265,12 +265,20 @@ const href = url ?? repo ?? "#";
         media?.classList.add("is-loaded");
       };
 
+      const revealAfterDecode = () => {
+        // Use decode() to ensure pixels are truly painted before removing shimmer
+        if (typeof el.decode === "function") {
+          el.decode().then(reveal).catch(reveal);
+        } else {
+          reveal();
+        }
+      };
+
       if (el.complete && el.naturalWidth > 0) {
-        // Already cached — reveal immediately
-        reveal();
+        // Cached — but still run through decode to avoid blank frame on iOS
+        revealAfterDecode();
       } else {
-        el.addEventListener("load", reveal, { once: true });
-        // If it errors (broken src) just show the shimmer-less container
+        el.addEventListener("load", revealAfterDecode, { once: true });
         el.addEventListener("error", () => media?.classList.add("is-loaded"), {
           once: true,
         });

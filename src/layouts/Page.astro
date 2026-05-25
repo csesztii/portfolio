@@ -204,7 +204,7 @@ const mobTitle = isHome ? "" : title.toUpperCase();
     /* ── Mobile header ───────────────────────────────── */
     .mob-header {
       display: none; /* hidden on desktop */
-      position: fixed;
+      position: sticky;
       top: 0;
       left: 0;
       right: 0;
@@ -272,9 +272,9 @@ const mobTitle = isHome ? "" : title.toUpperCase();
     .mob-nav__band {
       flex: 1;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: flex-end;
-      padding: 0 2rem;
+      padding: 0 2rem 2rem;
       text-decoration: none;
       color: var(--color-ink);
     }
