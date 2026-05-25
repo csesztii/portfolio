@@ -17,10 +17,15 @@ html {
   color: var(--color-text);
   background-color: var(--color-surface);
   scroll-behavior: smooth;
+  /* Prevent overscroll bounce showing white background */
+  overscroll-behavior: none;
+  background-color: var(--scrollbar-bg, var(--color-surface));
 }
 
 body {
   margin: 0;
+  /* Inherit the page colour so iOS rubber-band sees the right bg */
+  background-color: inherit;
 }
 
 p {

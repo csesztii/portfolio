@@ -75,7 +75,7 @@ const projects = (await getCollection("projects"))
       }
     }
 
-    .grid :global(.card) {
+    .grid :global(.card.is-hidden) {
       opacity: 0;
     }
 
@@ -112,10 +112,10 @@ const projects = (await getCollection("projects"))
             if (entry.isIntersecting) {
               observer.unobserve(entry.target);
               const card = entry.target as HTMLElement;
-              // Stagger by column position within the 3-column grid
               const index = Array.from(cards).indexOf(card);
               const col = index % 3;
               card.style.animationDelay = `${col * 80}ms`;
+              card.classList.remove("is-hidden");
               card.classList.add("is-visible");
             }
           });
@@ -123,7 +123,18 @@ const projects = (await getCollection("projects"))
         { threshold: 0.08 },
       );
 
-      cards.forEach((card) => observer.observe(card));
+      cards.forEach((card) => {
+        const rect = (card as HTMLElement).getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!inView) {
+          // Only hide cards that are below the fold — skip animation for above-fold content
+          (card as HTMLElement).classList.add("is-hidden");
+          observer.observe(card);
+        } else {
+          // Already visible on load — show immediately without waiting for JS scroll
+          observer.observe(card);
+        }
+      });
     });
   </script>
 </Page>
