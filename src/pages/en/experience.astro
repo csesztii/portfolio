@@ -217,6 +217,23 @@ const description = "Experience";
     .reveal.is-visible {
       animation: floatUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
+
+    /* ════════════════════ MOBILE ≤ 768px ════════════════════ */
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 5rem 1.2rem 3rem;
+      }
+      h1 { font-size: 2.5rem; }
+      .profile-title { font-size: 1.6rem; }
+      .profile-list { font-size: 1rem; }
+      .job-title { font-size: 1.6rem; }
+      .job-company { font-size: 1.1rem; }
+      .job-desc { font-size: 1rem; }
+      .job {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+      }
+    }
   </style>
 
   <script>

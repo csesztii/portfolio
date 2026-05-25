@@ -86,6 +86,17 @@ const projects = (await getCollection("projects"))
       margin: 2rem 0 0 0;
       color: var(--color-ink-80);
     }
+
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 5rem 1.2rem 3rem;
+      }
+      h1 { font-size: 2.5rem; }
+      .grid {
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+      }
+    }
   </style>
 
   <script>

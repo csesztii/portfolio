@@ -1,6 +1,6 @@
 ---
 import Base from "./Base.astro";
-import { t, getLocaleFromUrl, localePath, type Locale } from "../i18n/utils";
+import { getLocaleFromUrl, localePath, type Locale } from "../i18n/utils";
 
 interface Props {
   title: string;
@@ -13,6 +13,9 @@ const locale = getLocaleFromUrl(Astro.url) as Locale;
 const canonical = Astro.site
   ? new URL(`${Astro.url.pathname}${Astro.url.search}`, Astro.site).href
   : Astro.url.href;
+
+const isHome = title === "Home";
+const mobTitle = isHome ? "" : title.toUpperCase();
 ---
 
 <Base
@@ -21,6 +24,48 @@ const canonical = Astro.site
   locale={locale}
   canonical={canonical}
 >
+  <!-- Mobile header: hidden on desktop, visible on mobile -->
+  <header class="mob-header" id="mob-header">
+    <span class="mob-header__title">{mobTitle}</span>
+    <button class="mob-burger" id="mob-burger" aria-label="Open navigation" type="button">
+      <svg width="28" height="22" viewBox="0 0 28 22" fill="none" aria-hidden="true">
+        <rect x="0" y="0"  width="28" height="3" rx="1.5" fill="currentColor"/>
+        <rect x="0" y="9.5" width="28" height="3" rx="1.5" fill="currentColor"/>
+        <rect x="0" y="19" width="28" height="3" rx="1.5" fill="currentColor"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Full-screen hamburger nav overlay -->
+  <div class="mob-nav" id="mob-nav" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="mob-nav__close" id="mob-nav-close" aria-label="Close navigation" type="button">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20.7 3.3a1 1 0 0 0-1.4 0L12 10.6 4.7 3.3a1 1 0 1 0-1.4 1.4L10.6 12l-7.3 7.3a1 1 0 1 0 1.4 1.4L12 13.4l7.3 7.3a1 1 0 1 0 1.4-1.4L13.4 12l7.3-7.3a1 1 0 0 0 0-1.4Z" fill="currentColor"/>
+      </svg>
+    </button>
+
+    <nav class="mob-nav__bands">
+      <a class="mob-nav__band mob-nav__band--home" href={localePath("/", locale)}>
+        <span class={`mob-nav__label${isHome ? " is-active" : ""}`}>HOME</span>
+      </a>
+      <a class="mob-nav__band mob-nav__band--exp" href={localePath("/experience", locale)}>
+        <span class={`mob-nav__label${title === "Experience" ? " is-active" : ""}`}>EXPERIENCE</span>
+      </a>
+      <a class="mob-nav__band mob-nav__band--works" href={localePath("/works", locale)}>
+        <span class={`mob-nav__label${title === "Works" ? " is-active" : ""}`}>WORKS</span>
+      </a>
+      <a class="mob-nav__band mob-nav__band--cv" href={localePath("/cv", locale)}>
+        <span class={`mob-nav__label${title === "CV" ? " is-active" : ""}`}>CV</span>
+      </a>
+      <div class="mob-nav__band mob-nav__band--lang">
+        <a class={`mob-nav__lang${locale === "en" ? " is-active" : ""}`} href={localePath("/", "en")}>→ English</a>
+        <a class={`mob-nav__lang${locale === "de" ? " is-active" : ""}`} href={localePath("/", "de")}>Deutsch</a>
+        <a class={`mob-nav__lang${locale === "hu" ? " is-active" : ""}`} href={localePath("/", "hu")}>Magyar</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Desktop close button (hidden on mobile) -->
   {
     showNav && (
       <a
@@ -28,13 +73,7 @@ const canonical = Astro.site
         href={localePath("/", locale)}
         aria-label="Back to home"
       >
-        <svg
-          width="50"
-          height="50"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z"
             fill="currentColor"
@@ -44,15 +83,42 @@ const canonical = Astro.site
     )
   }
 
-
-
   <main id="main-content">
     <slot />
   </main>
 
   <footer></footer>
 
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const burger  = document.getElementById("mob-burger");
+      const nav     = document.getElementById("mob-nav");
+      const closeBtn = document.getElementById("mob-nav-close");
+
+      const openNav = () => {
+        nav?.classList.add("is-open");
+        nav?.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeNav = () => {
+        nav?.classList.remove("is-open");
+        nav?.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      };
+
+      burger?.addEventListener("click", openNav);
+      closeBtn?.addEventListener("click", closeNav);
+
+      // Close when clicking outside the nav bands (on the close button area)
+      nav?.addEventListener("click", (e) => {
+        if (e.target === nav) closeNav();
+      });
+    });
+  </script>
+
   <style>
+    /* ── Desktop close button ─────────────────────────── */
     .pageCloseBtn {
       position: fixed;
       top: 1.75rem;
@@ -66,6 +132,117 @@ const canonical = Astro.site
     }
     .pageCloseBtn:hover {
       transform: scale(1.1);
+    }
+
+    /* ── Mobile header ───────────────────────────────── */
+    .mob-header {
+      display: none; /* hidden on desktop */
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 1.4rem;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--scrollbar-bg, var(--color-surface));
+      color: var(--mob-header-ink, var(--color-ink));
+    }
+    .mob-header__title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .mob-burger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: inherit;
+      padding: 0.2rem;
+      display: grid;
+      place-items: center;
+    }
+
+    /* ── Hamburger nav overlay ───────────────────────── */
+    .mob-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      visibility: hidden;
+    }
+    .mob-nav.is-open {
+      transform: translateX(0);
+      visibility: visible;
+    }
+    .mob-nav__close {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.4rem;
+      z-index: 201;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-ink);
+      padding: 0.3rem;
+      display: grid;
+      place-items: center;
+    }
+    .mob-nav__bands {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .mob-nav__band {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 2rem;
+      text-decoration: none;
+      color: var(--color-ink);
+    }
+    .mob-nav__band--home  { background: var(--color-bg-contact); }
+    .mob-nav__band--exp   { background: var(--color-bg-experience); }
+    .mob-nav__band--works { background: var(--color-bg-works); }
+    .mob-nav__band--cv    { background: var(--color-bg-cv); }
+    .mob-nav__band--lang  {
+      background: var(--color-bg-home);
+      color: var(--color-white);
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .mob-nav__label {
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    .mob-nav__label.is-active {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+    .mob-nav__lang {
+      font-size: 1.15rem;
+      color: var(--color-white);
+      text-decoration: none;
+    }
+    .mob-nav__lang.is-active {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* ── Show mobile header on small screens ─────────── */
+    @media (max-width: 768px) {
+      .mob-header   { display: flex; }
+      .pageCloseBtn { display: none; }
     }
   </style>
 </Base>
