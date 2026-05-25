@@ -89,9 +89,12 @@ const projects = (await getCollection("projects"))
 
     @media (max-width: 768px) {
       .wrap {
-        padding: 5rem 1.2rem 3rem;
+        padding: 5rem 0rem 3rem;
       }
-      h1 { font-size: 2.5rem; }
+      h1 {
+        font-size: 2.5rem;
+        display: none;
+      }
       .grid {
         grid-template-columns: 1fr;
         margin-top: 1.5rem;
@@ -117,7 +120,7 @@ const projects = (await getCollection("projects"))
             }
           });
         },
-        { threshold: 0.08 }
+        { threshold: 0.08 },
       );
 
       cards.forEach((card) => observer.observe(card));

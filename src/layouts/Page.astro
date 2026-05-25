@@ -27,40 +27,101 @@ const mobTitle = isHome ? "" : title.toUpperCase();
   <!-- Mobile header: hidden on desktop, visible on mobile -->
   <header class="mob-header" id="mob-header">
     <span class="mob-header__title">{mobTitle}</span>
-    <button class="mob-burger" id="mob-burger" aria-label="Open navigation" type="button">
-      <svg width="28" height="22" viewBox="0 0 28 22" fill="none" aria-hidden="true">
-        <rect x="0" y="0"  width="28" height="3" rx="1.5" fill="currentColor"/>
-        <rect x="0" y="9.5" width="28" height="3" rx="1.5" fill="currentColor"/>
-        <rect x="0" y="19" width="28" height="3" rx="1.5" fill="currentColor"/>
+    <button
+      class="mob-burger"
+      id="mob-burger"
+      aria-label="Open navigation"
+      type="button"
+    >
+      <svg
+        width="28"
+        height="22"
+        viewBox="0 0 28 22"
+        fill="none"
+        aria-hidden="true"
+      >
+        <rect x="0" y="0" width="28" height="3" rx="1.5" fill="currentColor"
+        ></rect>
+        <rect x="0" y="9.5" width="28" height="3" rx="1.5" fill="currentColor"
+        ></rect>
+        <rect x="0" y="19" width="28" height="3" rx="1.5" fill="currentColor"
+        ></rect>
       </svg>
     </button>
   </header>
 
   <!-- Full-screen hamburger nav overlay -->
-  <div class="mob-nav" id="mob-nav" aria-hidden="true" role="dialog" aria-modal="true">
-    <button class="mob-nav__close" id="mob-nav-close" aria-label="Close navigation" type="button">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M20.7 3.3a1 1 0 0 0-1.4 0L12 10.6 4.7 3.3a1 1 0 1 0-1.4 1.4L10.6 12l-7.3 7.3a1 1 0 1 0 1.4 1.4L12 13.4l7.3 7.3a1 1 0 1 0 1.4-1.4L13.4 12l7.3-7.3a1 1 0 0 0 0-1.4Z" fill="currentColor"/>
+  <div
+    class="mob-nav"
+    id="mob-nav"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+  >
+    <button
+      class="mob-nav__close"
+      id="mob-nav-close"
+      aria-label="Close navigation"
+      type="button"
+    >
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M20.7 3.3a1 1 0 0 0-1.4 0L12 10.6 4.7 3.3a1 1 0 1 0-1.4 1.4L10.6 12l-7.3 7.3a1 1 0 1 0 1.4 1.4L12 13.4l7.3 7.3a1 1 0 1 0 1.4-1.4L13.4 12l7.3-7.3a1 1 0 0 0 0-1.4Z"
+          fill="currentColor"></path>
       </svg>
     </button>
 
     <nav class="mob-nav__bands">
-      <a class="mob-nav__band mob-nav__band--home" href={localePath("/", locale)}>
+      <a
+        class="mob-nav__band mob-nav__band--home"
+        href={localePath("/", locale)}
+      >
         <span class={`mob-nav__label${isHome ? " is-active" : ""}`}>HOME</span>
       </a>
-      <a class="mob-nav__band mob-nav__band--exp" href={localePath("/experience", locale)}>
-        <span class={`mob-nav__label${title === "Experience" ? " is-active" : ""}`}>EXPERIENCE</span>
+      <a
+        class="mob-nav__band mob-nav__band--exp"
+        href={localePath("/experience", locale)}
+      >
+        <span
+          class={`mob-nav__label${title === "Experience" ? " is-active" : ""}`}
+          >EXPERIENCE</span
+        >
       </a>
-      <a class="mob-nav__band mob-nav__band--works" href={localePath("/works", locale)}>
-        <span class={`mob-nav__label${title === "Works" ? " is-active" : ""}`}>WORKS</span>
+      <a
+        class="mob-nav__band mob-nav__band--works"
+        href={localePath("/works", locale)}
+      >
+        <span class={`mob-nav__label${title === "Works" ? " is-active" : ""}`}
+          >WORKS</span
+        >
       </a>
-      <a class="mob-nav__band mob-nav__band--cv" href={localePath("/cv", locale)}>
-        <span class={`mob-nav__label${title === "CV" ? " is-active" : ""}`}>CV</span>
+      <a
+        class="mob-nav__band mob-nav__band--cv"
+        href={localePath("/cv", locale)}
+      >
+        <span class={`mob-nav__label${title === "CV" ? " is-active" : ""}`}
+          >CV</span
+        >
       </a>
       <div class="mob-nav__band mob-nav__band--lang">
-        <a class={`mob-nav__lang${locale === "en" ? " is-active" : ""}`} href={localePath("/", "en")}>→ English</a>
-        <a class={`mob-nav__lang${locale === "de" ? " is-active" : ""}`} href={localePath("/", "de")}>Deutsch</a>
-        <a class={`mob-nav__lang${locale === "hu" ? " is-active" : ""}`} href={localePath("/", "hu")}>Magyar</a>
+        <a
+          class={`mob-nav__lang${locale === "en" ? " is-active" : ""}`}
+          href={localePath("/", "en")}>→ English</a
+        >
+        <a
+          class={`mob-nav__lang${locale === "de" ? " is-active" : ""}`}
+          href={localePath("/", "de")}>Deutsch</a
+        >
+        <a
+          class={`mob-nav__lang${locale === "hu" ? " is-active" : ""}`}
+          href={localePath("/", "hu")}>Magyar</a
+        >
       </div>
     </nav>
   </div>
@@ -73,7 +134,13 @@ const mobTitle = isHome ? "" : title.toUpperCase();
         href={localePath("/", locale)}
         aria-label="Back to home"
       >
-        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z"
             fill="currentColor"
@@ -91,8 +158,8 @@ const mobTitle = isHome ? "" : title.toUpperCase();
 
   <script>
     document.addEventListener("astro:page-load", () => {
-      const burger  = document.getElementById("mob-burger");
-      const nav     = document.getElementById("mob-nav");
+      const burger = document.getElementById("mob-burger");
+      const nav = document.getElementById("mob-nav");
       const closeBtn = document.getElementById("mob-nav-close");
 
       const openNav = () => {
@@ -206,11 +273,19 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       text-decoration: none;
       color: var(--color-ink);
     }
-    .mob-nav__band--home  { background: var(--color-bg-contact); }
-    .mob-nav__band--exp   { background: var(--color-bg-experience); }
-    .mob-nav__band--works { background: var(--color-bg-works); }
-    .mob-nav__band--cv    { background: var(--color-bg-cv); }
-    .mob-nav__band--lang  {
+    .mob-nav__band--home {
+      background: var(--color-bg-contact);
+    }
+    .mob-nav__band--exp {
+      background: var(--color-bg-experience);
+    }
+    .mob-nav__band--works {
+      background: var(--color-bg-works);
+    }
+    .mob-nav__band--cv {
+      background: var(--color-bg-cv);
+    }
+    .mob-nav__band--lang {
       background: var(--color-bg-home);
       color: var(--color-white);
       flex-direction: column;
@@ -241,8 +316,15 @@ const mobTitle = isHome ? "" : title.toUpperCase();
 
     /* ── Show mobile header on small screens ─────────── */
     @media (max-width: 768px) {
-      .mob-header   { display: flex; }
-      .pageCloseBtn { display: none; }
+      .mob-header {
+        display: flex;
+      }
+      .pageCloseBtn {
+        display: none;
+      }
+      h1 {
+        display: none;
+      }
     }
   </style>
 </Base>

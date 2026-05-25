@@ -448,7 +448,7 @@ const locale = getLocaleFromUrl(Astro.url);
         min-height: unset;
       }
       .home__left {
-        padding: 5rem 1.4rem 2rem;
+        padding: 5rem 0rem 0rem;
         overflow: visible;
         min-height: unset;
       }
@@ -457,19 +457,30 @@ const locale = getLocaleFromUrl(Astro.url);
         min-width: unset;
         width: 100%;
         align-items: center;
+        padding: 0rem 2.7rem 2rem;
       }
       .avatar {
         width: 55%;
         max-width: 220px;
       }
-      .name { font-size: 2.4rem; }
-      .intro { font-size: 1rem; }
+      .name {
+        font-size: 2.4rem;
+      }
+      .intro {
+        font-size: 1rem;
+      }
       /* Globe/language switcher → in hamburger nav on mobile */
-      .globeWrap { display: none; }
+      .globeWrap {
+        display: none;
+      }
       /* CONTACT button hidden — form is always visible below */
-      .contactBtn { display: none; }
+      .contactBtn {
+        display: none;
+      }
       /* Right panel (big nav buttons) hidden on mobile */
-      .home__right { display: none; }
+      .home__right {
+        display: none;
+      }
       /* Contact overlay becomes always-visible inline section */
       .contactOverlay {
         position: static;
@@ -481,7 +492,9 @@ const locale = getLocaleFromUrl(Astro.url);
         overflow: visible;
       }
       /* Hide close button inside the overlay on mobile */
-      .closeBtn { display: none; }
+      .closeBtn {
+        display: none;
+      }
     }
   </style>
 </Page>

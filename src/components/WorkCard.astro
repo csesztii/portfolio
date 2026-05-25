@@ -170,6 +170,15 @@ const href = url ?? repo ?? "#";
   }
 
   @media (max-width: 768px) {
+    .card,
+    .card:hover {
+      border: none;
+      border-radius: 0;
+      border-bottom: 1.5px solid var(--color-ink);
+    }
+    .card:hover {
+      box-shadow: none;
+    }
     .card--featured {
       grid-column: span 1;
     }

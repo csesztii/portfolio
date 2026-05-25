@@ -1,7 +1,7 @@
 ---
 import Page from "../../layouts/Page.astro";
 
-const title = "CV";
+const title = "Curriculum Vitae";
 const description = "Curriculum vitae";
 ---
 
@@ -306,8 +306,7 @@ const description = "Curriculum vitae";
         padding: 5rem 1.2rem 3rem;
       }
       h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.75rem;
+        display: none;
       }
       /* Single column: left border removed, padding reset */
       .cv-left {
@@ -319,8 +318,12 @@ const description = "Curriculum vitae";
         margin-top: 2rem;
       }
       /* Section headings left-aligned on mobile */
-      h2 { text-align: left; }
-      .cv-right h2 { text-align: left; }
+      h2 {
+        text-align: left;
+      }
+      .cv-right h2 {
+        text-align: left;
+      }
 
       /* Date on its own line, right-aligned; content below left-aligned */
       .row {
