@@ -210,7 +210,9 @@ const description = "Experience";
       }
     }
 
-    .reveal {
+    /* JS adds .is-setup to opt in to the hidden→animate flow.
+       Without JS (or before JS runs) elements are always visible. */
+    .reveal.is-setup {
       opacity: 0;
     }
 
@@ -257,6 +259,10 @@ const description = "Experience";
   <script>
     document.addEventListener("astro:page-load", () => {
       const items = document.querySelectorAll(".page--experience .reveal");
+
+      // Mark elements as hidden NOW (JS is ready) so there's no
+      // gap between CSS paint and observer setup.
+      items.forEach((item) => item.classList.add("is-setup"));
 
       const observer = new IntersectionObserver(
         (entries) => {

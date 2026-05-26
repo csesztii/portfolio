@@ -271,15 +271,15 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       height: 100%;
       overflow-y: auto;
       /* hide scrollbar cross-browser */
-      scrollbar-width: none;          /* Firefox */
-      -ms-overflow-style: none;       /* IE/Edge */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
     }
     .mob-nav__bands::-webkit-scrollbar {
-      display: none;                  /* Chrome/Safari */
+      display: none; /* Chrome/Safari */
     }
     .mob-nav__band {
       flex: 1;
-      min-height: 5rem;               /* never collapse thinner than this */
+      min-height: 5rem; /* never collapse thinner than this */
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
@@ -342,13 +342,17 @@ const mobTitle = isHome ? "" : title.toUpperCase();
     }
 
     /* ── Landscape phone: lang links in one row ──────── */
-    @media (orientation: landscape) and (max-height: 600px) {
+    @media (orientation: landscape) and (max-height: 768px) {
+      /* Push all labels away from the X close button (right: ~3.5rem total) */
+      .mob-nav__band {
+        padding-right: 4rem;
+      }
       .mob-nav__band--lang {
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
         gap: 1.2rem;
-        padding: 0 2rem;
+        padding: 0 4rem;
       }
     }
   </style>
