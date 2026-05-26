@@ -46,7 +46,7 @@ const href = url ?? repo ?? "#";
           class="card__img"
           src={normalizedImage}
           alt=""
-          loading="lazy"
+          loading="eager"
           decoding="async"
           data-card-img
         />
@@ -158,8 +158,7 @@ const href = url ?? repo ?? "#";
     object-fit: cover;
     display: block;
     object-position: center;
-    /* Start invisible; fade in once loaded */
-    opacity: 0;
+    /* opacity managed by JS — no CSS default so images are always visible without JS */
     transition: opacity 0.4s ease;
   }
   .card__img.is-loaded {
@@ -212,8 +211,10 @@ const href = url ?? repo ?? "#";
       height: 180px;
     }
     .card__img {
+      min-width: 200px;
       max-width: 60%;
       margin: auto;
+      object-fit: cover;
     }
   }
 
@@ -298,9 +299,11 @@ const href = url ?? repo ?? "#";
       };
 
       if (el.complete && el.naturalWidth > 0) {
-        // Cached — but still run through decode to avoid blank frame on iOS
+        // Already loaded (e.g. cached) — reveal immediately
         revealAfterDecode();
       } else {
+        // Hide NOW (JS is ready) then watch for load — no gap between paint and JS
+        el.style.opacity = "0";
         el.addEventListener("load", revealAfterDecode, { once: true });
         el.addEventListener("error", () => media?.classList.add("is-loaded"), {
           once: true,
