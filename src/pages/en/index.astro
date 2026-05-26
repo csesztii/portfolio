@@ -496,5 +496,31 @@ const locale = getLocaleFromUrl(Astro.url);
         display: none;
       }
     }
+
+    /* ════════ MEDIUM: 769px – 1100px (tablet / narrow desktop) ════════ */
+    @media (min-width: 769px) and (max-width: 1100px) {
+      .home__right {
+        padding: 1.5rem 1.25rem;
+        margin-top: 5rem;
+      }
+      .bigBtn {
+        /* Scale font with viewport width so it never overflows the column */
+        font-size: clamp(2.5rem, 3.2vw, 2.8rem);
+        border-radius: 10px;
+        letter-spacing: 0.04em;
+        height: 20%; /* slightly shorter than the default 25%-of-navBtns */
+        min-height: 20%;
+      }
+      .navBtns {
+        gap: 4rem;
+        justify-content: flex-start;
+      }
+      .leftInner {
+        max-width: 90%;
+      }
+      .name {
+        font-size: clamp(2.5rem, 3.2vw, 2.8rem);
+      }
+    }
   </style>
 </Page>
