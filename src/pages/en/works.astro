@@ -82,6 +82,11 @@ const projects = (await getCollection("projects"))
     .grid :global(.card.is-visible) {
       animation: floatUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
+
+    /* After animation ends, is-shown takes over — no active animation, so hover transform works */
+    .grid :global(.card.is-shown) {
+      opacity: 1;
+    }
     .hint {
       margin: 2rem 0 0 0;
       color: var(--color-ink-80);
@@ -124,6 +129,19 @@ const projects = (await getCollection("projects"))
               card.style.animationDelay = `${col * 80}ms`;
               card.classList.remove("is-hidden");
               card.classList.add("is-visible");
+
+              // Once the entrance animation finishes, swap is-visible for is-shown.
+              // This clears animation fill-mode ownership of `transform` so that
+              // the CSS hover transition (translateY) can work freely.
+              card.addEventListener(
+                "animationend",
+                () => {
+                  card.classList.remove("is-visible");
+                  card.classList.add("is-shown");
+                  card.style.animationDelay = "";
+                },
+                { once: true },
+              );
             }
           });
         },
