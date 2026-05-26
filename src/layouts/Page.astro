@@ -105,7 +105,8 @@ const mobTitle = isHome ? "" : title.toUpperCase();
         class="mob-nav__band mob-nav__band--cv"
         href={localePath("/cv", locale)}
       >
-        <span class={`mob-nav__label${title === "Curriculum Vitae" || title === "CV" ? " is-active" : ""}`}
+        <span
+          class={`mob-nav__label${title === "Curriculum Vitae" || title === "CV" ? " is-active" : ""}`}
           >CV</span
         >
       </a>
@@ -268,13 +269,21 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       display: flex;
       flex-direction: column;
       height: 100%;
+      overflow-y: auto;
+      /* hide scrollbar cross-browser */
+      scrollbar-width: none;          /* Firefox */
+      -ms-overflow-style: none;       /* IE/Edge */
+    }
+    .mob-nav__bands::-webkit-scrollbar {
+      display: none;                  /* Chrome/Safari */
     }
     .mob-nav__band {
       flex: 1;
+      min-height: 5rem;               /* never collapse thinner than this */
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
-      padding: 0 2rem 2rem;
+      padding: 0 2rem 1.2rem;
       text-decoration: none;
       color: var(--color-ink);
     }
@@ -329,6 +338,17 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       }
       h1 {
         display: none;
+      }
+    }
+
+    /* ── Landscape phone: lang links in one row ──────── */
+    @media (orientation: landscape) and (max-height: 600px) {
+      .mob-nav__band--lang {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1.2rem;
+        padding: 0 2rem;
       }
     }
   </style>
