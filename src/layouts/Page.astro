@@ -155,7 +155,56 @@ const mobTitle = isHome ? "" : title.toUpperCase();
     <slot />
   </main>
 
-  <footer></footer>
+  <footer class={`site-footer${isHome ? " site-footer--home" : ""}`}>
+    <div class="footer__inner">
+      <!-- Navigation links -->
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a
+          class={`footer__nav-link${title === "Experience" ? " is-active" : ""}`}
+          href={localePath("/experience", locale)}>Experience</a
+        >
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <a
+          class={`footer__nav-link${title === "Works" ? " is-active" : ""}`}
+          href={localePath("/works", locale)}>Works</a
+        >
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <a
+          class={`footer__nav-link${title === "Curriculum Vitae" || title === "CV" ? " is-active" : ""}`}
+          href={localePath("/cv", locale)}>CV</a
+        >
+      </nav>
+
+      <!-- Contact info -->
+      <address class="footer__contact">
+        <a
+          class="footer__contact-link"
+          href="mailto:molnar.eszter.zsuzsa@gmail.com"
+        >
+          mol.eszter04@gmail.com
+        </a>
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <a class="footer__contact-link" href="tel:+43123456789">
+          +36 30 911 7060
+        </a>
+        <span class="footer__sep" aria-hidden="true">·</span>
+        <a
+          class="footer__contact-link"
+          href="https://www.linkedin.com/in/esztermolnar0420"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn ↗
+        </a>
+      </address>
+
+      <!-- Copyright & legal -->
+      <p class="footer__legal">
+        © {new Date().getFullYear()} Eszter Molnár · All rights reserved ·
+        <span>Built with Astro</span>
+      </p>
+    </div>
+  </footer>
 
   <script>
     document.addEventListener("astro:page-load", () => {
@@ -353,6 +402,107 @@ const mobTitle = isHome ? "" : title.toUpperCase();
         align-items: center;
         gap: 1.2rem;
         padding: 0 4rem;
+      }
+    }
+
+    /* ── Site footer ─────────────────────────────────── */
+    .site-footer {
+      background: var(--scrollbar-bg, var(--color-surface));
+      color: var(--color-ink);
+      /* border-top: 1px solid rgba(34, 34, 59, 0.06); */
+      box-shadow: 0 -8px 32px rgba(34, 34, 59, 0.12);
+    }
+
+    .footer__inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2.5rem 3.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    /* Nav links row */
+    .footer__nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer__nav-link {
+      text-decoration: none;
+      color: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .footer__nav-link:hover,
+    .footer__nav-link.is-active {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .footer__sep {
+      font-size: 0.85rem;
+    }
+
+    /* Contact row */
+    .footer__contact {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-style: normal;
+    }
+
+    .footer__contact-link {
+      text-decoration: none;
+      color: inherit;
+      font-size: 0.95rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer__contact-link:hover {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Legal line */
+    .footer__legal {
+      font-size: 0.82rem;
+      margin: 0;
+    }
+
+    /* Home page: hide footer on desktop, show on mobile with contact green */
+    .site-footer--home {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      /* Flat line instead of glow on mobile */
+      .site-footer {
+        box-shadow: none;
+        border-top: 1px solid rgba(34, 34, 59, 0.2);
+      }
+
+      .site-footer--home {
+        display: block;
+        background: var(--color-bg-contact);
+        color: var(--color-ink);
+        border-top: 1px solid rgba(34, 34, 59, 0.2);
+      }
+
+      .footer__inner {
+        padding: 2rem 1.5rem;
+        gap: 0.85rem;
       }
     }
   </style>
