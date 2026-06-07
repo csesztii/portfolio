@@ -141,7 +141,9 @@ const href = url ?? repo ?? "#";
     }
   }
   .card__media {
-    height: 180px;
+    /* Always crop to 16:9 regardless of card width or screen size */
+    aspect-ratio: 16 / 9;
+    width: 100%;
     border-radius: 6px;
     overflow: hidden;
     background: linear-gradient(
@@ -161,7 +163,8 @@ const href = url ?? repo ?? "#";
   .card--featured .card__media {
     flex: 0 0 45%;
     max-width: 400px;
-    height: 260px;
+    /* Keep 16:9 on featured card too — override with unset so aspect-ratio still applies */
+    aspect-ratio: 16 / 9;
   }
   .card__img {
     width: 100%;
@@ -190,11 +193,7 @@ const href = url ?? repo ?? "#";
     .card--featured .card__media {
       flex: unset;
       max-width: 100%;
-      height: 220px;
-    }
-    .card__img {
-      max-width: 400px;
-      margin: auto;
+      /* aspect-ratio handles height automatically */
     }
   }
 
@@ -222,11 +221,11 @@ const href = url ?? repo ?? "#";
     .card--featured .card__media {
       flex: unset;
       max-width: 100%;
-      height: 180px;
+      /* aspect-ratio handles height automatically */
     }
     .card__img {
-      min-width: 200px;
-      max-width: 60%;
+      /* Full-width 16:9 crop on mobile too */
+      max-width: 100%;
       margin: auto;
       object-fit: cover;
     }
@@ -299,6 +298,8 @@ const href = url ?? repo ?? "#";
       const media = el.closest(".card__media") as HTMLElement | null;
 
       const reveal = () => {
+        // Use explicit inline style so it overrides the earlier inline opacity:0
+        el.style.opacity = "1";
         el.classList.add("is-loaded");
         media?.classList.add("is-loaded");
       };
@@ -319,9 +320,11 @@ const href = url ?? repo ?? "#";
         // Hide NOW (JS is ready) then watch for load — no gap between paint and JS
         el.style.opacity = "0";
         el.addEventListener("load", revealAfterDecode, { once: true });
-        el.addEventListener("error", () => media?.classList.add("is-loaded"), {
-          once: true,
-        });
+        el.addEventListener("error", () => {
+          // On error: remove shimmer but keep image slot visible
+          el.style.opacity = "1";
+          media?.classList.add("is-loaded");
+        }, { once: true });
       }
     });
   });
