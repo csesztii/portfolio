@@ -135,6 +135,42 @@ const locale = getLocaleFromUrl(Astro.url);
       rightItems.forEach((el) => observer.observe(el));
       // ────────────────────────────────────────────────────────────────
 
+      // ── Show name in mob-header when .name scrolls out of view ───────
+      const nameEl = document.querySelector(".name") as HTMLElement | null;
+      const mobTitle = document.querySelector(".mob-header__title") as HTMLElement | null;
+
+      if (nameEl && mobTitle) {
+        // Start hidden — title is empty on home page, no flash
+        mobTitle.classList.add("is-hidden");
+
+        const nameObserver = new IntersectionObserver(
+          ([entry]) => {
+            if (!entry.isIntersecting) {
+              // Name scrolled away — show it in the header
+              mobTitle.textContent = "Eszter Molnár";
+              mobTitle.classList.remove("is-hidden");
+              mobTitle.classList.add("is-visible");
+            } else {
+              // Name back in view — fade out and clear
+              mobTitle.classList.remove("is-visible");
+              mobTitle.classList.add("is-hidden");
+              mobTitle.addEventListener(
+                "transitionend",
+                () => {
+                  if (!mobTitle.classList.contains("is-visible")) {
+                    mobTitle.textContent = "";
+                  }
+                },
+                { once: true },
+              );
+            }
+          },
+          { threshold: 0 },
+        );
+        nameObserver.observe(nameEl);
+      }
+      // ────────────────────────────────────────────────────────────────
+
       const open = document.getElementById("contact-open");
       const slot = document.getElementById("contact-slot");
       const close = document.getElementById("contact-close");
@@ -181,14 +217,13 @@ const locale = getLocaleFromUrl(Astro.url);
     }
   </style>
   <style>
-    :global(html),
-    :global(body) {
-      /* scrolling enabled, scrollbar hidden */
+    :global(html) {
+      /* scrolling enabled, scrollbar hidden — applied to html only so that
+         position:sticky on mob-header works (body must not be its own scroll container) */
       overflow-y: scroll;
       scrollbar-width: none; /* Firefox */
     }
-    :global(html)::-webkit-scrollbar,
-    :global(body)::-webkit-scrollbar {
+    :global(html)::-webkit-scrollbar {
       display: none; /* Chrome/Safari/Edge */
     }
     .page--home {

@@ -39,7 +39,15 @@ const description = "Experience";
       <!-- AI Team Manager -->
       <div class="job reveal">
         <h3 class="job-title">AI Team Manager</h3>
-        <p class="job-company">Safetrace</p>
+        <p class="job-company">
+          Safetrace
+          <a
+            href="https://www.safetrace.ai/about"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="job-company-link">Visit Website</a
+          >
+        </p>
         <ul class="job-desc">
           <li>
             Leading a small research team focused on applied AI, coordinating
@@ -70,6 +78,12 @@ const description = "Experience";
         <h3 class="job-title">Machine Learning Engineer</h3>
         <p class="job-company">
           HUN-REN SZTAKI Institute for Computer Science and Control, Budapest
+          <a
+            href="https://sztaki.hun-ren.hu/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="job-company-link">Visit Website</a
+          >
         </p>
         <ul class="job-desc">
           <li>
@@ -102,6 +116,12 @@ const description = "Experience";
         <h3 class="job-title">Research Intern</h3>
         <p class="job-company">
           Max Planck Institute for Biological Intelligence, Munich
+          <a
+            href="https://www.bi.mpg.de/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="job-company-link">Visit Website</a
+          >
         </p>
         <ul class="job-desc">
           <li>
@@ -214,6 +234,31 @@ const description = "Experience";
       font-weight: 400;
       margin: 0 0 0.85rem 0;
       color: var(--color-ink);
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .job-company-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: inherit;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      transition: text-decoration 0.2s ease;
+    }
+    .job-company-link::before {
+      content: "·";
+      margin-right: 0.5rem;
+      font-weight: 400;
+    }
+    .job-company-link::after {
+      content: " ↗";
+    }
+    .job-company-link:hover {
+      text-underline-offset: 3px;
     }
 
     .job-desc {
