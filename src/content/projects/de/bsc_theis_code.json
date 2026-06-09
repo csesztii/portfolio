@@ -1,0 +1,20 @@
+{
+  "title": "Kampfläufer-Tracking in Multi-Kamera-Systemen mit YOLO und SAM2",
+  "subtitle": "Bachelorarbeit",
+  "description": "Automatische Erkennung, Verfolgung und Zonenklassifikation von Kampfläufern (eine Strandvogelart) aus Drei-Kamera-Videoaufnahmen, mithilfe von YOLOv9 und SAM2. Entwickelt für biologische Forschung am Max-Planck-Institut für biologische Intelligenz.",
+  "tech": [
+    "Machine Learning",
+    "Computer Vision",
+    "Transfer Learning",
+    "Python",
+    "PyTorch",
+    "Segment Anything 2",
+    "YOLOv9"
+  ],
+  "repo": "https://github.com/csesztii/bsc-thesis",
+  "url": "https://drive.google.com/file/d/1_Bh90SBqTLP2Q1fNucu1oVKuSFn4uG2b/view?usp=drive_link",
+  "image": "/works/bsc_thesis.jpg",
+  "featured": true,
+  "order": 1,
+  "buttonText": "Arbeit lesen"
+}

@@ -1,10 +1,156 @@
 ---
-import Page from '../../layouts/Page.astro';
-const title = 'Arbeiten';
-const description = 'Arbeiten';
+import Page from "../../layouts/Page.astro";
+import WorkCard from "../../components/WorkCard.astro";
+import { getCollection } from "astro:content";
+
+const title = "Arbeiten";
+const description = "Ausgewählte Projekte – Eszter Molnár";
+
+const projects = (await getCollection("projects"))
+  .filter((p) => p.id.startsWith("de/"))
+  .slice()
+  .sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 ---
 
 <Page title={title} description={description}>
-  <p>Placeholder (DE). Mirror the EN page when ready.</p>
-</Page>
+  <section class="page page--works">
+    <div class="wrap">
+      <h1>PROJEKTE</h1>
+      <div class="grid">
+        {
+          projects.map((p) => (
+            <WorkCard
+              title={p.data.title}
+              subtitle={p.data.subtitle}
+              description={p.data.description}
+              image={p.data.image}
+              buttonText={p.data.buttonText ?? "Ansehen"}
+              url={p.data.url}
+              repo={p.data.repo}
+              featured={p.data.featured}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
+  <style is:global>
+    :root {
+      --scrollbar-bg: var(--color-bg-works);
+    }
+  </style>
+  <style>
+    .page--works {
+      background: var(--color-bg-works);
+      min-height: 100vh;
+      color: var(--color-ink);
+    }
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 4.5rem 3.25rem;
+    }
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 4rem;
+      letter-spacing: -0.01em;
+    }
+    .grid {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    @keyframes floatUp {
+      from {
+        opacity: 0;
+        transform: translateY(36px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .grid :global(.card.is-hidden) {
+      opacity: 0;
+    }
+
+    .grid :global(.card.is-visible) {
+      animation: floatUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .grid :global(.card.is-shown) {
+      opacity: 1;
+    }
+
+    /* ════════ MEDIUM: 769px – 1100px ════════ */
+    @media (min-width: 769px) and (max-width: 1100px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 1.5rem 0rem 3rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+        display: none;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        margin-top: 1.5rem;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const cards = document.querySelectorAll(".grid .card");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(entry.target);
+              const card = entry.target as HTMLElement;
+              const index = Array.from(cards).indexOf(card);
+              const col = index % 3;
+              card.style.animationDelay = `${col * 80}ms`;
+              card.classList.remove("is-hidden");
+              card.classList.add("is-visible");
+
+              card.addEventListener(
+                "animationend",
+                () => {
+                  card.classList.remove("is-visible");
+                  card.classList.add("is-shown");
+                  card.style.animationDelay = "";
+                },
+                { once: true },
+              );
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+
+      cards.forEach((card) => {
+        const rect = (card as HTMLElement).getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!inView) {
+          (card as HTMLElement).classList.add("is-hidden");
+          observer.observe(card);
+        } else {
+          observer.observe(card);
+        }
+      });
+    });
+  </script>
+</Page>

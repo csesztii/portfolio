@@ -1,0 +1,12 @@
+{
+  "title": "Önfeledten Budapesten (HU)",
+  "subtitle": "Ungarische Webseite über Budapest",
+  "description": "Eine Webseite über Reisen in Budapest, die ich für ein Universitätsprojekt erstellt habe. Die Seite verwendet eigene Illustrationen und Fotos, und das Design stammt ebenfalls von mir. Reines HTML und CSS mit JavaScript und Bootstrap.",
+  "tech": ["HTML", "CSS", "JavaScript", "Bootstrap"],
+  "url": "https://csesztii.github.io/onfeledten-budapesten/",
+  "repo": "https://github.com/csesztii/onfeledten-budapesten",
+  "image": "/works/onfeledten_budapesten.png",
+  "featured": false,
+  "order": 4,
+  "buttonText": "Seite ansehen"
+}

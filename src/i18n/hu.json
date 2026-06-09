@@ -2,6 +2,12 @@
   "nav.home": "Kezdőlap",
   "nav.experience": "Tapasztalat",
   "nav.works": "Munkák",
-  "nav.cv": "Önéletrajz"
+  "nav.cv": "Önéletrajz",
+  "nav.aria": "Lábléc navigáció",
+  "mob.open": "Navigáció megnyitása",
+  "mob.close": "Navigáció bezárása",
+  "close.aria": "Vissza a főoldalra",
+  "footer.rights": "Minden jog fenntartva",
+  "footer.built": "Készült Astróval"
 }
 
