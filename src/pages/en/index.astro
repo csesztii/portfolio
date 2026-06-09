@@ -53,7 +53,8 @@ const locale = getLocaleFromUrl(Astro.url);
             <div class="lang" aria-label="Language">
               <a
                 class="lang__item lang__item--active"
-                href={localePath("/", "en")}>→ English</a
+                href={localePath("/", "en")}
+                aria-current="true">→ English</a
               >
               <a class="lang__item" href={localePath("/", "de")}>Deutsch</a>
               <a class="lang__item" href={localePath("/", "hu")}>Magyar</a>
@@ -181,6 +182,8 @@ const locale = getLocaleFromUrl(Astro.url);
         if (slot) slot.classList.remove("is-open");
         if (nav) nav.hidden = false;
         document.documentElement.style.overflow = "";
+        // Return focus to the CONTACT button that triggered the overlay
+        open?.focus();
       }
 
       if (open && slot) {
@@ -189,6 +192,8 @@ const locale = getLocaleFromUrl(Astro.url);
           slot.classList.add("is-open");
           if (nav) nav.hidden = true;
           document.documentElement.style.overflow = "hidden";
+          // Move focus into the overlay's close button
+          close?.focus();
         });
       }
       if (close && slot) {

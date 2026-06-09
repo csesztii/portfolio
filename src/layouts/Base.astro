@@ -13,6 +13,7 @@ interface Props {
 }
 
 const { title, description, locale, canonical } = Astro.props;
+const pageTitle = title === "Home" ? "Eszter Molnár" : `${title} — Eszter Molnár`;
 
 const hrefLocales: Locale[] = ['en', 'hu', 'de'];
 
@@ -66,7 +67,7 @@ function absoluteHref(pathnameLike: string) {
       })}
     />
 
-    <title>{title}</title>
+    <title>{pageTitle}</title>
     <ClientRouter />
   </head>
   <body>

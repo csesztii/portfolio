@@ -45,7 +45,7 @@ const href = url ?? repo ?? "#";
         <img
           class="card__img"
           src={normalizedImage}
-          alt=""
+          alt={`Screenshot of ${title}`}
           loading="eager"
           decoding="async"
           data-card-img
@@ -57,14 +57,26 @@ const href = url ?? repo ?? "#";
     <div class="card__actions">
       {
         url && (
-          <a class="card__cta" href={url} target="_blank">
+          <a
+            class="card__cta"
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${buttonText} — ${title}`}
+          >
             {buttonText}
           </a>
         )
       }
       {
         repo && (
-          <a class="card__cta" href={repo} target="_blank">
+          <a
+            class="card__cta"
+            href={repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`See code — ${title}`}
+          >
             SEE CODE
           </a>
         )
@@ -320,11 +332,15 @@ const href = url ?? repo ?? "#";
         // Hide NOW (JS is ready) then watch for load — no gap between paint and JS
         el.style.opacity = "0";
         el.addEventListener("load", revealAfterDecode, { once: true });
-        el.addEventListener("error", () => {
-          // On error: remove shimmer but keep image slot visible
-          el.style.opacity = "1";
-          media?.classList.add("is-loaded");
-        }, { once: true });
+        el.addEventListener(
+          "error",
+          () => {
+            // On error: remove shimmer but keep image slot visible
+            el.style.opacity = "1";
+            media?.classList.add("is-loaded");
+          },
+          { once: true },
+        );
       }
     });
   });
