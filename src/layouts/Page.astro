@@ -81,14 +81,12 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       <a
         class="mob-nav__band mob-nav__band--home"
         href={localePath("/", locale)}
-        {...(isHome ? { "aria-current": "page" } : {})}
       >
         <span class={`mob-nav__label${isHome ? " is-active" : ""}`}>HOME</span>
       </a>
       <a
         class="mob-nav__band mob-nav__band--exp"
         href={localePath("/experience", locale)}
-        {...(title === "Experience" ? { "aria-current": "page" } : {})}
       >
         <span
           class={`mob-nav__label${title === "Experience" ? " is-active" : ""}`}
@@ -98,7 +96,6 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       <a
         class="mob-nav__band mob-nav__band--works"
         href={localePath("/works", locale)}
-        {...(title === "Works" ? { "aria-current": "page" } : {})}
       >
         <span class={`mob-nav__label${title === "Works" ? " is-active" : ""}`}
           >WORKS</span
@@ -107,7 +104,6 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       <a
         class="mob-nav__band mob-nav__band--cv"
         href={localePath("/cv", locale)}
-        {...(title === "Curriculum Vitae" || title === "CV" ? { "aria-current": "page" } : {})}
       >
         <span
           class={`mob-nav__label${title === "Curriculum Vitae" || title === "CV" ? " is-active" : ""}`}
@@ -117,18 +113,15 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       <div class="mob-nav__band mob-nav__band--lang">
         <a
           class={`mob-nav__lang${locale === "en" ? " is-active" : ""}`}
-          href={localePath("/", "en")}
-          {...(locale === "en" ? { "aria-current": "true" } : {})}>→ English</a
+          href={localePath("/", "en")}>→ English</a
         >
         <a
           class={`mob-nav__lang${locale === "de" ? " is-active" : ""}`}
-          href={localePath("/", "de")}
-          {...(locale === "de" ? { "aria-current": "true" } : {})}>Deutsch</a
+          href={localePath("/", "de")}>Deutsch</a
         >
         <a
           class={`mob-nav__lang${locale === "hu" ? " is-active" : ""}`}
-          href={localePath("/", "hu")}
-          {...(locale === "hu" ? { "aria-current": "true" } : {})}>Magyar</a
+          href={localePath("/", "hu")}>Magyar</a
         >
       </div>
     </nav>
@@ -172,20 +165,17 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       <nav class="footer__nav" aria-label="Footer navigation">
         <a
           class={`footer__nav-link${title === "Experience" ? " is-active" : ""}`}
-          href={localePath("/experience", locale)}
-          {...(title === "Experience" ? { "aria-current": "page" } : {})}>Experience</a
+          href={localePath("/experience", locale)}>Experience</a
         >
         <span class="footer__sep" aria-hidden="true">·</span>
         <a
           class={`footer__nav-link${title === "Works" ? " is-active" : ""}`}
-          href={localePath("/works", locale)}
-          {...(title === "Works" ? { "aria-current": "page" } : {})}>Works</a
+          href={localePath("/works", locale)}>Works</a
         >
         <span class="footer__sep" aria-hidden="true">·</span>
         <a
           class={`footer__nav-link${title === "Curriculum Vitae" || title === "CV" ? " is-active" : ""}`}
-          href={localePath("/cv", locale)}
-          {...(title === "Curriculum Vitae" || title === "CV" ? { "aria-current": "page" } : {})}>CV</a
+          href={localePath("/cv", locale)}>CV</a
         >
       </nav>
 
@@ -230,16 +220,12 @@ const mobTitle = isHome ? "" : title.toUpperCase();
         nav?.classList.add("is-open");
         nav?.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
-        // Move focus into dialog so keyboard/screen reader users are inside it
-        closeBtn?.focus();
       };
 
       const closeNav = () => {
         nav?.classList.remove("is-open");
         nav?.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
-        // Return focus to the trigger that opened the dialog
-        burger?.focus();
       };
 
       burger?.addEventListener("click", openNav);
