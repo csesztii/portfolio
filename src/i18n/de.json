@@ -1,7 +1,13 @@
 {
   "nav.home": "Startseite",
   "nav.experience": "Erfahrung",
-  "nav.works": "Arbeiten",
-  "nav.cv": "Lebenslauf"
+  "nav.works": "Projekte",
+  "nav.cv": "Lebenslauf",
+  "nav.aria": "Fußzeilennavigation",
+  "mob.open": "Navigation öffnen",
+  "mob.close": "Navigation schließen",
+  "close.aria": "Zurück zur Startseite",
+  "footer.rights": "Alle Rechte vorbehalten",
+  "footer.built": "Erstellt mit Astro"
 }
 

@@ -7,6 +7,7 @@ const title = "Works";
 const description = "Selected work";
 
 const projects = (await getCollection("projects"))
+  .filter((p) => p.id.startsWith("en/"))
   .slice()
   .sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999));
 ---

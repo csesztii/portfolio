@@ -2,6 +2,12 @@
   "nav.home": "Home",
   "nav.experience": "Experience",
   "nav.works": "Works",
-  "nav.cv": "CV"
+  "nav.cv": "CV",
+  "nav.aria": "Footer navigation",
+  "mob.open": "Open navigation",
+  "mob.close": "Close navigation",
+  "close.aria": "Back to home",
+  "footer.rights": "All rights reserved",
+  "footer.built": "Built with Astro"
 }
 
