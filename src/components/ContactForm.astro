@@ -1,9 +1,23 @@
 ---
 interface Props {
   title?: string;
+  labelFirstName?: string;
+  labelLastName?: string;
+  labelEmail?: string;
+  labelMessage?: string;
+  labelSend?: string;
+  labelCta?: string;
 }
 
-const { title = "Contact" } = Astro.props;
+const {
+  title = "Contact",
+  labelFirstName = "First Name",
+  labelLastName = "Last Name",
+  labelEmail = "E-mail Address",
+  labelMessage = "Message",
+  labelSend = "SEND",
+  labelCta = "Fill in the form below to get in touch with me!",
+} = Astro.props;
 ---
 
 <section aria-label={title} class="panel">
@@ -79,8 +93,8 @@ const { title = "Contact" } = Astro.props;
     method="post"
     action="https://formsubmit.co/mol.eszter04@gmail.com"
   >
-    <h2 class="form__title">Contact Me!</h2>
-    <p class="form__cta">Fill in the form below to get in touch with me!</p>
+    <h2 class="form__title">{title}</h2>
+    <p class="form__cta">{labelCta}</p>
     <input
       type="hidden"
       name="_next"
@@ -90,24 +104,24 @@ const { title = "Contact" } = Astro.props;
     <input type="hidden" name="_honey" style="display:none" />
     <div class="row">
       <label class="field">
-        <span class="field__label">First Name</span>
+        <span class="field__label">{labelFirstName}</span>
         <input
           class="field__control"
           name="firstName"
           autocomplete="given-name"
-          placeholder="First Name"
+          placeholder={labelFirstName}
           required
           maxlength="50"
           type="text"
         />
       </label>
       <label class="field">
-        <span class="field__label">Last Name</span>
+        <span class="field__label">{labelLastName}</span>
         <input
           class="field__control"
           name="lastName"
           autocomplete="family-name"
-          placeholder="Last Name"
+          placeholder={labelLastName}
           required
           maxlength="50"
           type="text"
@@ -116,29 +130,29 @@ const { title = "Contact" } = Astro.props;
     </div>
 
     <label class="field">
-      <span class="field__label">E-mail Address</span>
+      <span class="field__label">{labelEmail}</span>
       <input
         class="field__control"
         type="email"
         name="email"
-        placeholder="E-mail Address"
+        placeholder={labelEmail}
         required
         maxlength="100"
       />
     </label>
 
     <label class="field">
-      <span class="field__label">Message</span>
+      <span class="field__label">{labelMessage}</span>
       <textarea
         class="field__control field__control--textarea"
         name="message"
         rows={9}
-        placeholder="Message"
+        placeholder={labelMessage}
         required
         maxlength="2000"></textarea>
     </label>
 
-    <button class="button button--primary" type="submit">SEND</button>
+    <button class="button button--primary" type="submit">{labelSend}</button>
   </form>
 </section>
 

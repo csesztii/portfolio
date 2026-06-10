@@ -1,10 +1,361 @@
 ---
-import Page from '../../layouts/Page.astro';
-const title = 'Erfahrung';
-const description = 'Erfahrung';
+import Page from "../../layouts/Page.astro";
+
+const title = "Erfahrung";
+const description = "Berufliche Erfahrung – Eszter Molnár";
 ---
 
 <Page title={title} description={description}>
-  <p>Placeholder (DE). Mirror the EN page when ready.</p>
-</Page>
+  <section class="page page--experience">
+    <div class="wrap">
+      <h1>ERFAHRUNG</h1>
 
+      <!-- Hauptprofil -->
+      <div class="profile-card reveal">
+        <h2 class="profile-title">Hauptprofil</h2>
+        <ul class="profile-list">
+          <li>
+            Tiefgreifende Expertise in <b>KI</b> und <b>Deep Learning</b>, mit
+            Schwerpunkt auf Computer Vision und LLMs. Praktische Erfahrung
+            entlang des gesamten ML-Lebenszyklus: Datenerhebung, Beschriftung,
+            Augmentierung, Modelltraining, Evaluation und Datensatzgenerierung
+            mit dem HuggingFace-Framework.
+          </li>
+          <li>
+            Versiert in Python und dem zugehörigen ML-Stack: PyTorch, Pandas und
+            NumPy.
+          </li>
+          <li>
+            Entwickelt Webprojekte aus Interesse und zur Übung. Vertraut mit
+            HTML, CSS, JavaScript, React und Astro. Bevorzugt reines CSS
+            gegenüber Frameworks.
+          </li>
+          <li>
+            Informatikabschluss mit breitem Programmierwissen in den meisten
+            gängigen Sprachen, Algorithmen und Datenstrukturen.
+          </li>
+        </ul>
+      </div>
+
+      <!-- KI-Teamleiterin -->
+      <div class="job reveal">
+        <h3 class="job-title">KI-Teamleiterin</h3>
+        <p class="job-company">
+          Safetrace
+          <a
+            href="https://www.safetrace.ai/about"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="job-company-link">Website besuchen</a
+          >
+        </p>
+        <ul class="job-desc">
+          <li>
+            Leitung eines kleinen Forschungsteams im Bereich angewandter KI,
+            Koordination von Aufgaben, Durchführung von Meetings und
+            Vorantreiben des Projekts
+          </li>
+          <li>
+            Implementierung der zentralen Modelltrainingspipeline von Grund auf
+            mit XLM-RoBERTa für Tokenklassifikation auf einem eigenen Datensatz
+          </li>
+          <li>
+            Direkter Beitrag zum Aufbau des Trainingsdatensatzes mit praktischer
+            Erfahrung im gesamten Datenlebenszyklus – von der Generierung bis
+            zur Beschriftung
+          </li>
+          <li>
+            Praktische Erfahrung in Trainingsmonitoring, Evaluation und
+            Hyperparameter-Optimierung während des gesamten Projekts
+          </li>
+          <li>
+            Erfahrung im Ausbalancieren von technischer Einzelarbeit und
+            Teamkoordination in einem kleinen, agilen Forschungsumfeld
+          </li>
+        </ul>
+      </div>
+
+      <!-- Machine Learning Engineer -->
+      <div class="job reveal">
+        <h3 class="job-title">Machine Learning Engineer</h3>
+        <p class="job-company">
+          HUN-REN SZTAKI Institut für Informatik und Steuerungstechnik, Budapest
+          <a
+            href="https://sztaki.hun-ren.hu/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="job-company-link">Website besuchen</a
+          >
+        </p>
+        <ul class="job-desc">
+          <li>
+            Arbeit an der Automatisierung der Messung von koronarer
+            Arterienverkalkung aus kardialen CT-Aufnahmen zur Unterstützung der
+            klinischen Diagnose
+          </li>
+          <li>
+            Einsatz von TotalSegmentator für medizinische
+            Bildsegmentierung und Erkundung verschiedener Methoden in einer
+            Forschungsumgebung ohne vordefinierte Lösung
+          </li>
+          <li>
+            Explorative Datenanalyse von Patientendaten und Recherche möglicher
+            Ansätze zur Arbeit mit einem begrenzten Datensatz
+          </li>
+          <li>
+            Verarbeitung und Visualisierung medizinischer Bilddaten mit Slicer
+            3D, Punktwolken und Python-basierten Werkzeugen
+          </li>
+          <li>
+            Einblick in Forschungsmethoden, digitale Gesundheit und medizinische
+            Dokumentenverarbeitung bei der Arbeit in einem Forschungsinstitut
+          </li>
+        </ul>
+      </div>
+
+      <!-- Forschungspraktikantin -->
+      <div class="job reveal">
+        <h3 class="job-title">Forschungspraktikantin</h3>
+        <p class="job-company">
+          Max-Planck-Institut für biologische Intelligenz, München
+          <a
+            href="https://www.bi.mpg.de/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="job-company-link">Website besuchen</a
+          >
+        </p>
+        <ul class="job-desc">
+          <li>
+            Anfertigung meiner Bachelorarbeit vor Ort am Institut, an einem
+            automatisierten Tracking-System für Kampfläufer, die in einer
+            kontrollierten Lek-Umgebung gefilmt wurden
+          </li>
+          <li>
+            Aufbau der vollständigen Trainingspipeline für ein
+            YOLOv8-Objekterkennungsmodell, einschließlich Datenbeschriftung und
+            Datensatzerstellung aus Rohvideosegmenten
+          </li>
+          <li>
+            Entwicklung der Inferenzpipeline zur Erkennung und Verfolgung
+            einzelner Vögel über Videoframes, unter Verwendung von
+            YOLO-Detektionen zur Initialisierung von SAM2
+          </li>
+          <li>
+            Das System gibt Position und ID jedes Vogels anhand vordefinierter
+            Zonen aus und liefert Biologen strukturierte, nutzbare Daten
+          </li>
+          <li>
+            Erstellung eines interaktiven Streamlit-Interfaces, damit Biologen
+            das Tool ohne technische Vorkenntnisse verwenden können
+          </li>
+          <li>
+            Praktische Erfahrung mit Kalibrierung, 2D-zu-3D-Punktprojektion und
+            dem gesamten Computer-Vision-Workflow von Rohmaterial bis zur
+            strukturierten Ausgabe
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    :root {
+      --scrollbar-bg: var(--color-bg-experience);
+    }
+  </style>
+  <style>
+    .page--experience {
+      background: var(--color-bg-experience);
+      min-height: 100vh;
+      color: var(--color-ink);
+    }
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 4.5rem 3.25rem 6rem;
+    }
+
+    h1 {
+      margin: 0 0 2rem 0;
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+      font-size: 4rem;
+    }
+
+    /* ── Main Profile Card ──────────────────────────────── */
+    .profile-card {
+      background: var(--color-ink);
+      color: var(--color-bg-experience);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .profile-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: var(--color-bg-experience);
+    }
+
+    .profile-list {
+      margin: 0;
+      padding-left: 1.3rem;
+      color: var(--color-bg-experience);
+      font-size: 1.15rem;
+      line-height: 1.65;
+      list-style: disc;
+    }
+
+    .profile-list li {
+      margin-bottom: 0.55rem;
+    }
+
+    /* ── Job Entry ──────────────────────────────────────── */
+    .job {
+      margin-bottom: 2.75rem;
+      padding-bottom: 2.75rem;
+      border-bottom: 1px solid var(--color-ink);
+    }
+
+    .job:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .job-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem 0;
+      color: var(--color-ink);
+    }
+
+    .job-company {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 0 0 0.85rem 0;
+      color: var(--color-ink);
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .job-company-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: inherit;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      transition: text-decoration 0.2s ease;
+    }
+    .job-company-link::before {
+      content: "·";
+      margin-right: 0.5rem;
+      font-weight: 400;
+    }
+    .job-company-link::after {
+      content: " ↗";
+    }
+    .job-company-link:hover {
+      text-underline-offset: 3px;
+    }
+
+    .job-desc {
+      font-size: 1.15rem;
+      line-height: 1.65;
+      margin: 0 0 0.2rem 0;
+      color: var(--color-ink);
+      list-style: disc;
+      padding-left: 2.5rem;
+    }
+
+    .job-desc li {
+      margin-bottom: 0.45rem;
+    }
+
+    /* ── Float-up entrance animation ───────────────────── */
+    @keyframes floatUp {
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal.is-setup {
+      opacity: 0;
+    }
+
+    .reveal.is-visible {
+      animation: floatUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* ════════════════════ MOBILE ≤ 768px ════════════════════ */
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 1.5rem 0rem 3rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+        display: none;
+      }
+      .profile-card {
+        border-radius: 0;
+      }
+      .profile-title {
+        font-size: 2rem;
+      }
+      .profile-list {
+        font-size: 1.15rem;
+      }
+      .job-title {
+        font-size: 2rem;
+      }
+      .job-company {
+        font-size: 1.4rem;
+        margin-bottom: var(--space-8);
+      }
+      .job-desc {
+        font-size: 1.15rem;
+      }
+      .job {
+        margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        padding: 0 2rem 3rem;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const items = document.querySelectorAll(".page--experience .reveal");
+
+      // Mark elements as hidden NOW (JS is ready) so there's no
+      // gap between CSS paint and observer setup.
+      items.forEach((item) => item.classList.add("is-setup"));
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              observer.unobserve(entry.target);
+              const el = entry.target as HTMLElement;
+              const index = Array.from(items).indexOf(el);
+              el.style.animationDelay = `${index * 90}ms`;
+              el.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.05 },
+      );
+
+      items.forEach((item) => observer.observe(item));
+    });
+  </script>
+</Page>

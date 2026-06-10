@@ -1,6 +1,6 @@
 ---
 import Base from "./Base.astro";
-import { getLocaleFromUrl, localePath, type Locale } from "../i18n/utils";
+import { getLocaleFromUrl, localePath, t, type Locale } from "../i18n/utils";
 
 interface Props {
   title: string;
@@ -30,7 +30,7 @@ const mobTitle = isHome ? "" : title.toUpperCase();
     <button
       class="mob-burger"
       id="mob-burger"
-      aria-label="Open navigation"
+      aria-label={t("mob.open", locale)}
       type="button"
     >
       <svg
@@ -61,7 +61,7 @@ const mobTitle = isHome ? "" : title.toUpperCase();
     <button
       class="mob-nav__close"
       id="mob-nav-close"
-      aria-label="Close navigation"
+      aria-label={t("mob.close", locale)}
       type="button"
     >
       <svg
@@ -82,23 +82,23 @@ const mobTitle = isHome ? "" : title.toUpperCase();
         class="mob-nav__band mob-nav__band--home"
         href={localePath("/", locale)}
       >
-        <span class={`mob-nav__label${isHome ? " is-active" : ""}`}>HOME</span>
+        <span class={`mob-nav__label${isHome ? " is-active" : ""}`}>{t("nav.home", locale).toUpperCase()}</span>
       </a>
       <a
         class="mob-nav__band mob-nav__band--exp"
         href={localePath("/experience", locale)}
       >
         <span
-          class={`mob-nav__label${title === "Experience" ? " is-active" : ""}`}
-          >EXPERIENCE</span
+          class={`mob-nav__label${title === "Experience" || title === "Erfahrung" || title === "Tapasztalat" ? " is-active" : ""}`}
+          >{t("nav.experience", locale).toUpperCase()}</span
         >
       </a>
       <a
         class="mob-nav__band mob-nav__band--works"
         href={localePath("/works", locale)}
       >
-        <span class={`mob-nav__label${title === "Works" ? " is-active" : ""}`}
-          >WORKS</span
+        <span class={`mob-nav__label${title === "Works" || title === "Arbeiten" || title === "Munkák" ? " is-active" : ""}`}
+          >{t("nav.works", locale).toUpperCase()}</span
         >
       </a>
       <a
@@ -106,8 +106,8 @@ const mobTitle = isHome ? "" : title.toUpperCase();
         href={localePath("/cv", locale)}
       >
         <span
-          class={`mob-nav__label${title === "Curriculum Vitae" || title === "CV" ? " is-active" : ""}`}
-          >CV</span
+          class={`mob-nav__label${title === "Curriculum Vitae" || title === "CV" || title === "Lebenslauf" || title === "Önéletrajz" ? " is-active" : ""}`}
+          >{t("nav.cv", locale).toUpperCase()}</span
         >
       </a>
       <div class="mob-nav__band mob-nav__band--lang">
@@ -133,7 +133,7 @@ const mobTitle = isHome ? "" : title.toUpperCase();
       <a
         class="pageCloseBtn"
         href={localePath("/", locale)}
-        aria-label="Back to home"
+        aria-label={t("close.aria", locale)}
       >
         <svg
           width="50"
@@ -162,20 +162,23 @@ const mobTitle = isHome ? "" : title.toUpperCase();
   <footer class={`site-footer${isHome ? " site-footer--home" : ""}`}>
     <div class="footer__inner">
       <!-- Navigation links -->
-      <nav class="footer__nav" aria-label="Footer navigation">
+      <nav class="footer__nav" aria-label={t("nav.aria", locale)}>
         <a
-          class={`footer__nav-link${title === "Experience" ? " is-active" : ""}`}
-          href={localePath("/experience", locale)}>Experience</a
+          class={`footer__nav-link${title === "Experience" || title === "Erfahrung" || title === "Tapasztalat" ? " is-active" : ""}`}
+          href={localePath("/experience", locale)}
+          {...(title === "Experience" || title === "Erfahrung" || title === "Tapasztalat" ? { "aria-current": "page" } : {})}>{t("nav.experience", locale)}</a
         >
         <span class="footer__sep" aria-hidden="true">·</span>
         <a
-          class={`footer__nav-link${title === "Works" ? " is-active" : ""}`}
-          href={localePath("/works", locale)}>Works</a
+          class={`footer__nav-link${title === "Works" || title === "Arbeiten" || title === "Munkák" ? " is-active" : ""}`}
+          href={localePath("/works", locale)}
+          {...(title === "Works" || title === "Arbeiten" || title === "Munkák" ? { "aria-current": "page" } : {})}>{t("nav.works", locale)}</a
         >
         <span class="footer__sep" aria-hidden="true">·</span>
         <a
-          class={`footer__nav-link${title === "Curriculum Vitae" || title === "CV" ? " is-active" : ""}`}
-          href={localePath("/cv", locale)}>CV</a
+          class={`footer__nav-link${title === "Curriculum Vitae" || title === "CV" || title === "Lebenslauf" || title === "Önéletrajz" ? " is-active" : ""}`}
+          href={localePath("/cv", locale)}
+          {...(title === "Curriculum Vitae" || title === "CV" || title === "Lebenslauf" || title === "Önéletrajz" ? { "aria-current": "page" } : {})}>{t("nav.cv", locale)}</a
         >
       </nav>
 
@@ -204,8 +207,8 @@ const mobTitle = isHome ? "" : title.toUpperCase();
 
       <!-- Copyright & legal -->
       <p class="footer__legal">
-        © {new Date().getFullYear()} Eszter Molnár · All rights reserved ·
-        <span>Built with Astro</span>
+        © {new Date().getFullYear()} Eszter Molnár · {t("footer.rights", locale)} ·
+        <span>{t("footer.built", locale)}</span>
       </p>
     </div>
   </footer>

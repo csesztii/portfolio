@@ -1,0 +1,12 @@
+{
+  "title": "Täglicher Wordle-Weihnachtskalender",
+  "subtitle": "Persönliche Webseite",
+  "description": "Ein Projekt, das ich 2025 für meine Familie erstellt habe. Die Seite funktioniert als Adventskalender: Bis Weihnachten gibt es täglich ein neues Wort zu erraten. Die gehostete Version ist eine Demo auf Englisch mit täglich demselben Wort.",
+  "tech": ["HTML", "CSS", "JavaScript"],
+  "repo": "https://github.com/csesztii/2025-christmas-calendar/tree/demo",
+  "url": "https://csesztii.github.io/2025-christmas-calendar/",
+  "image": "/works/christmas_calendar.png",
+  "featured": false,
+  "order": 5,
+  "buttonText": "Seite ansehen"
+}

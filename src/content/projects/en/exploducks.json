@@ -1,0 +1,11 @@
+{
+  "title": "ExploDucks",
+  "subtitle": "Custom Bomberman Implementation in Unity",
+  "description": "The classic Bomberman game with ducks. Created for a university project using Unity and C#. The game was developed by a team of 4 people. My main responsibility was to implement the power-up logic, and create the maps.",
+  "tech": ["TypeScript", "UI"],
+  "repo": "https://github.com/example/repo",
+  "image": "/works/exploducks.png",
+  "featured": false,
+  "order": 3,
+  "buttonText": "See code"
+}

@@ -1,0 +1,11 @@
+{
+  "title": "ExploDucks",
+  "subtitle": "Bomberman-Implementierung in Unity",
+  "description": "Das klassische Bomberman-Spiel – mit Enten. Für ein Universitätsprojekt mit Unity und C# entwickelt. Das Spiel entstand im Team von 4 Personen. Meine Hauptaufgabe war die Implementierung der Power-Up-Logik und die Erstellung der Spielkarten.",
+  "tech": ["TypeScript", "UI"],
+  "repo": "https://github.com/example/repo",
+  "image": "/works/exploducks.png",
+  "featured": false,
+  "order": 3,
+  "buttonText": "Code ansehen"
+}
