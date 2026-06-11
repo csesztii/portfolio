@@ -1,10 +1,144 @@
 ---
-import Page from '../../layouts/Page.astro';
-const title = 'Tapasztalat';
-const description = 'Tapasztalat';
+import Page from "../../layouts/Page.astro";
+
+const title = "Tapasztalat";
+const description = "Szakmai tapasztalat – Molnár Eszter";
 ---
 
 <Page title={title} description={description}>
-  <p>Placeholder (HU). Mirror the EN page when ready.</p>
-</Page>
+  <section class="page page--experience">
+    <div class="wrap">
+      <h1>TAPASZTALAT</h1>
 
+      <!-- Főprofil -->
+      <div class="profile-card reveal">
+        <h2 class="profile-title">Főprofil</h2>
+        <ul class="profile-list">
+          <li>
+            Mély szakértelem a <b>mesterséges intelligencia</b> és a <b>mély tanulás</b> területén,
+            különös tekintettel a gépi látásra és a nagy nyelvi modellekre. Gyakorlati tapasztalat
+            a teljes ML-életciklus mentén: adatgyűjtés, -annotálás, augmentáció, modelltraining,
+            kiértékelés és adathalmaz-generálás a HuggingFace keretrendszerrel.
+          </li>
+          <li>
+            Jártas Python és a hozzá kapcsolódó ML-eszközök – PyTorch, Pandas és NumPy – terén.
+          </li>
+          <li>
+            Saját érdeklődésből és gyakorlásképpen webprojekteket fejleszt. Tapasztalata van HTML,
+            CSS, JavaScript, React és Astro területén. Előnyben részesíti a natív CSS írását
+            keretrendszerekkel szemben.
+          </li>
+          <li>
+            Informatikus diploma, széleskörű programozási ismeretekkel: a legtöbb elterjedt
+            programozási nyelv, algoritmusok és adatszerkezetek terén.
+          </li>
+        </ul>
+      </div>
+
+      <!-- MI Csapatvezető -->
+      <div class="job reveal">
+        <h3 class="job-title">MI Csapatvezető</h3>
+        <p class="job-company">
+          Safetrace
+          <a href="https://www.safetrace.ai/about" target="_blank" rel="noopener noreferrer" class="job-company-link">Weboldal megtekintése</a>
+        </p>
+        <ul class="job-desc">
+          <li>Kis kutatócsapat vezetése alkalmazott MI területén, feladatok koordinálása, meetingek tartása és a projekt előrehaladásának biztosítása</li>
+          <li>A központi modelltraining-pipeline felépítése nulláról, XLM-RoBERTa használatával tokenosztályozáshoz saját adathalmazon</li>
+          <li>Közvetlen hozzájárulás a betanítási adathalmaz létrehozásához: gyakorlati tapasztalat az adatéletciklus egészén – a generálástól az annotálásig</li>
+          <li>Gyakorlati tapasztalat az edzés monitorozásában, kiértékelésében és hiperparaméter-optimalizálásban a projekt teljes időtartama alatt</li>
+          <li>Egyéni technikai munka és csapatkoordináció egyensúlyozása kis, gyorsan mozgó kutatókörnyezetben</li>
+        </ul>
+      </div>
+
+      <!-- Machine Learning Engineer -->
+      <div class="job reveal">
+        <h3 class="job-title">Machine Learning Engineer</h3>
+        <p class="job-company">
+          HUN-REN SZTAKI Számítástechnikai és Automatizálási Kutatóintézet, Budapest
+          <a href="https://sztaki.hun-ren.hu/en" target="_blank" rel="noopener noreferrer" class="job-company-link">Weboldal megtekintése</a>
+        </p>
+        <ul class="job-desc">
+          <li>Koszorúér-meszesedés automatizált mérésén dolgoztam szívizom CT-felvételekből, klinikai diagnosztika támogatása céljából</li>
+          <li>TotalSegmentator alkalmazása orvosi képszegmentáláshoz; több módszertan feltárása kutatási fázisban, előre meghatározott megoldás nélkül</li>
+          <li>Páciensadatok feltáró elemzése és lehetséges módszerek kutatása a korlátozott adathalmaz megkerülésére</li>
+          <li>Orvosi képadatok feldolgozása és megjelenítése Slicer 3D, pontfelhők és Python-alapú eszközök segítségével</li>
+          <li>Betekintés kutatási módszertanokba, digitális egészségügybe és orvosi dokumentumfeldolgozásba kutatóintézeti munkakörnyezetben</li>
+        </ul>
+      </div>
+
+      <!-- Kutatói Gyakornok -->
+      <div class="job reveal">
+        <h3 class="job-title">Kutatói Gyakornok</h3>
+        <p class="job-company">
+          Max Planck Intézet a Biológiai Intelligenciáért, München
+          <a href="https://www.bi.mpg.de/en" target="_blank" rel="noopener noreferrer" class="job-company-link">Weboldal megtekintése</a>
+        </p>
+        <ul class="job-desc">
+          <li>BSc szakdolgozatomat helyszínen, az intézetben készítettem: kontrollált lek-környezetben filmezett pajzsossnef madarak automatizált követőrendszerét fejlesztettem</li>
+          <li>Egy YOLOv8 objektumdetektáló modell teljes betanítási pipeline-jának felépítése, beleértve az adatannotálást és adathalmaz-létrehozást nyers videószegmensekből</li>
+          <li>Az inferencia-pipeline kifejlesztése egyedi madarak észlelésére és követésére videóképkockákon át, YOLO-detektálások használatával a SAM2 inicializálásához</li>
+          <li>A rendszer előre meghatározott zónák szerint adja ki minden madár helyzetét és azonosítóját, strukturált, felhasználható adatot szolgáltatva a biológusoknak</li>
+          <li>Interaktív Streamlit-felület elkészítése, hogy a biológusok technikai háttér nélkül is tudják kezelni az eszközt</li>
+          <li>Kamerák kalibrálásával, 2D–3D pontvetítéssel és a teljes gépi látás-munkafolyamattal kapcsolatos gyakorlati tapasztalat szerzése nyers anyagtól a strukturált kimenetig</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <style is:global>
+    :root { --scrollbar-bg: var(--color-bg-experience); }
+  </style>
+  <style>
+    .page--experience { background: var(--color-bg-experience); min-height: 100vh; color: var(--color-ink); }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 4.5rem 3.25rem 6rem; }
+    h1 { margin: 0 0 2rem 0; font-family: var(--font-display); letter-spacing: -0.01em; font-size: 4rem; }
+    .profile-card { background: var(--color-ink); color: var(--color-bg-experience); border-radius: var(--radius-lg); padding: 1.6rem 2rem; margin-bottom: 2.5rem; }
+    .profile-title { font-size: 2.2rem; font-weight: 700; margin: 0 0 1rem 0; color: var(--color-bg-experience); }
+    .profile-list { margin: 0; padding-left: 1.3rem; color: var(--color-bg-experience); font-size: 1.15rem; line-height: 1.65; list-style: disc; }
+    .profile-list li { margin-bottom: 0.55rem; }
+    .job { margin-bottom: 2.75rem; padding-bottom: 2.75rem; border-bottom: 1px solid var(--color-ink); }
+    .job:last-child { border-bottom: none; margin-bottom: 0; }
+    .job-title { font-size: 2.2rem; font-weight: 700; margin: 0 0 0.25rem 0; color: var(--color-ink); }
+    .job-company { font-size: 1.5rem; font-weight: 400; margin: 0 0 0.85rem 0; color: var(--color-ink); display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
+    .job-company-link { font-size: 0.95rem; font-weight: 500; text-decoration: none; color: inherit; letter-spacing: 0.02em; white-space: nowrap; transition: text-decoration 0.2s ease; }
+    .job-company-link::before { content: "·"; margin-right: 0.5rem; font-weight: 400; }
+    .job-company-link::after { content: " ↗"; }
+    .job-company-link:hover { text-underline-offset: 3px; }
+    .job-desc { font-size: 1.15rem; line-height: 1.65; margin: 0 0 0.2rem 0; color: var(--color-ink); list-style: disc; padding-left: 2.5rem; }
+    .job-desc li { margin-bottom: 0.45rem; }
+    @keyframes floatUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal.is-setup { opacity: 0; }
+    .reveal.is-visible { animation: floatUp 0.55s cubic-bezier(0.22,1,0.36,1) both; }
+    @media (max-width: 768px) {
+      .wrap { padding: 1.5rem 0 3rem; }
+      h1 { font-size: 2.5rem; display: none; }
+      .profile-card { border-radius: 0; }
+      .profile-title { font-size: 2rem; }
+      .profile-list { font-size: 1.15rem; }
+      .job-title { font-size: 2rem; }
+      .job-company { font-size: 1.4rem; margin-bottom: var(--space-8); }
+      .job-desc { font-size: 1.15rem; }
+      .job { margin-bottom: 3rem; padding-bottom: 3rem; padding: 0 2rem 3rem; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const items = document.querySelectorAll(".page--experience .reveal");
+      items.forEach((item) => item.classList.add("is-setup"));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target);
+            const el = entry.target as HTMLElement;
+            const index = Array.from(items).indexOf(el);
+            el.style.animationDelay = `${index * 90}ms`;
+            el.classList.add("is-visible");
+          }
+        });
+      }, { threshold: 0.05 });
+      items.forEach((item) => observer.observe(item));
+    });
+  </script>
+</Page>

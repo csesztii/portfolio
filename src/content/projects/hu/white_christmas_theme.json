@@ -1,0 +1,11 @@
+{
+  "title": "White Christmas",
+  "subtitle": "VSCode Téma",
+  "description": "Egy ünnepi, hangulatos világos téma, amely karácsonyi hangulatot visz a kódszerkesztőbe! Mint egy frissen hullott hómező az évszak ikonikus zöld és piros színeivel.",
+  "tech": ["Visual Studio Code Extension", "Design", "UI"],
+  "repo": "https://github.com/csesztii/white-christmas-theme",
+  "image": "/works/white_christmas_theme.png",
+  "featured": false,
+  "order": 2,
+  "buttonText": "Kód megtekintése"
+}

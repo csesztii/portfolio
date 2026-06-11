@@ -1,0 +1,12 @@
+{
+  "title": "Pajzsossnef-követés többkamerás rendszerekben YOLO és SAM2 segítségével",
+  "subtitle": "BSc Szakdolgozat",
+  "description": "Pajzsossnef madarak (egy parti madárfaj) automatikus detektálása, követése és zónaosztályozása háromkamerás videófelvételekből, YOLOv9 és SAM2 segítségével. A Max Planck Intézet a Biológiai Intelligenciáért megbízásából készült biológiai kutatásra.",
+  "tech": ["Machine Learning", "Computer Vision", "Transfer Learning", "Python", "PyTorch", "Segment Anything 2", "YOLOv9"],
+  "repo": "https://github.com/csesztii/bsc-thesis",
+  "url": "https://drive.google.com/file/d/1_Bh90SBqTLP2Q1fNucu1oVKuSFn4uG2b/view?usp=drive_link",
+  "image": "/works/bsc_thesis.jpg",
+  "featured": true,
+  "order": 1,
+  "buttonText": "Szakdolgozat olvasása"
+}

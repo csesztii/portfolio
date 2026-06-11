@@ -1,0 +1,12 @@
+{
+  "title": "Napi Wordle Karácsonyi Naptár",
+  "subtitle": "Személyes weboldal",
+  "description": "Egy projektet készítettem a családomnak 2025-ben. Az oldal adventi naptárként működik: karácsonyig minden nap új szó adható meg. A demo verzió angolra fordítva, minden nap ugyanazzal a szóval érhető el, és az eredeti projekt bemutatójaként szolgál.",
+  "tech": ["HTML", "CSS", "JavaScript"],
+  "repo": "https://github.com/csesztii/2025-christmas-calendar/tree/demo",
+  "url": "https://csesztii.github.io/2025-christmas-calendar/",
+  "image": "/works/christmas_calendar.png",
+  "featured": false,
+  "order": 5,
+  "buttonText": "Oldal megtekintése"
+}

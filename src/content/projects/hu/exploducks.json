@@ -1,0 +1,11 @@
+{
+  "title": "ExploDucks",
+  "subtitle": "Egyedi Bomberman implementáció Unityben",
+  "description": "A klasszikus Bomberman-játék kacsákkal. Egyetemi projektként készítettük Unity és C# segítségével, egy 4 fős csapatban. Az én főbb feladataim a power-up logika implementálása és a pályák elkészítése voltak.",
+  "tech": ["Unity", "C#", "Game Design"],
+  "repo": "https://github.com/example/repo",
+  "image": "/works/exploducks.png",
+  "featured": false,
+  "order": 3,
+  "buttonText": "Kód megtekintése"
+}

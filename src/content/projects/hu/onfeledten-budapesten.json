@@ -1,0 +1,12 @@
+{
+  "title": "Önfeledten Budapesten",
+  "subtitle": "Magyar nyelvű Budapest-oldal",
+  "description": "Egy Budapest-utazásokról szóló weboldal, amelyet egyetemi projektként készítettem. Az oldalon saját illusztrációim és fotóim szerepelnek, a design is tőlem származik. Egyszerű HTML, CSS, JavaScript és Bootstrap felhasználásával készült.",
+  "tech": ["HTML", "CSS", "JavaScript", "Bootstrap"],
+  "url": "https://csesztii.github.io/onfeledten-budapesten/",
+  "repo": "https://github.com/csesztii/onfeledten-budapesten",
+  "image": "/works/onfeledten_budapesten.png",
+  "featured": false,
+  "order": 4,
+  "buttonText": "Oldal megtekintése"
+}
